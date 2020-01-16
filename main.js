@@ -11,7 +11,8 @@ let math = Math.round((algebra + geography + physics) / 3);
 console.log(math);
 
 // Задача №2
-
-
+let myName = "Юра", message;
+message = "Привет, мир! Меня зовут " + myName + "!";
+console.log(message);
 
 // Задача №3
