@@ -16,3 +16,7 @@ message = "Привет, мир! Меня зовут " + myName + "!";
 console.log(message);
 
 // Задача №3
+let x = 2, y = 22, z = 0, result;
+
+result = x*y + 5*z + x-1;
+console.log(result);
