@@ -15,8 +15,7 @@ function getResult(a,b,c) {
   } else if (d == 0) {
     console.log('Есть 1 корень!');
     x1 = (-b) / (2 * a);
-    x = [x1];
-    return x;
+    return x = [x1];;
   } else {
     console.log('Нет корней!')
     return x;
@@ -24,7 +23,7 @@ function getResult(a,b,c) {
 }
 
 function getAverageMark(marks) {
-  let sum, averageMark;
+  let sum = 0;
   if (marks != '') {
     console.log(marks);
     if (marks.length >= 5) {
@@ -33,12 +32,14 @@ function getAverageMark(marks) {
     for (let сount = 0; сount < marks.length; сount++) {
       console.log(сount);
       marks[сount] = parseInt(marks[сount]);
-      sum += marks[сount];
+      sum = sum + marks[сount];
+      console.log(marks[сount]);
+      console.log(sum);
     };
 
-    averageMark = sum / marks.length;
+
   }
-  return averageMark;
+  return sum / marks.length;;
 }
 
 function output(name, old) {
