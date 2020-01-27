@@ -15,7 +15,7 @@ function getResult(a,b,c) {
   } else if (d == 0) {
     console.log('Есть 1 корень!');
     x1 = (-b) / (2 * a);
-    return x = [x1];;
+    return x = [x1];
   } else {
     console.log('Нет корней!')
     return x;
