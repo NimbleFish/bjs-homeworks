@@ -30,39 +30,28 @@ function getAverageMark(marks) {
       marks = marks.slice(0, 5);
     }
     for (let сount = 0; сount < marks.length; сount++) {
-      console.log(сount);
-      marks[сount] = parseInt(marks[сount]);
       sum = sum + marks[сount];
-      console.log(marks[сount]);
-      console.log(sum);
     };
-
-
   }
-  return sum / marks.length;;
+  return sum / marks.length;
 }
 
 function output(name, old) {
-  let resulted = '';
   if (old) {
-    resulted = 'Не желаете ли олд-фэшн, ' + name + '?';
+    return 'Не желаете ли олд-фэшн, ' + name + '?';
   }
   else {
-    resulted = 'Сожалею, ' + name + ', но я не могу вам продать алкоголь. Зато могу предложить вам замечательный клюквенный компот! '
+    return 'Сожалею, ' + name + ', но я не могу вам продать алкоголь. Зато могу предложить вам замечательный клюквенный компот! '
   }
-  return resulted;
 }
 
 function askDrink(name, dateOfBirthday){
-  let date = new Date(), year = date.getFullYear(), result;
-  if (year - dateOfBirthday.getFullYear() >= 18) {
+  if (new Date().getFullYear() - dateOfBirthday.getFullYear() >= 18) {
     console.log('Вам больше 18 лет!');
-    result = output(name, true);
+    return output(name, true);
   }
   else {
     console.log('Вам меньше 18 лет!');
-    result = output(name, false);
+    return output(name, false);
   }
-  console.log(result)
-  return result;
 }
