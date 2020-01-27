@@ -9,7 +9,7 @@ function getResult(a,b,c) {
     return x;
   }
   if (d > 0) {
-    console.log('Есть 2 кореня!');
+    console.log('Есть 2 корня!');
     d = Math.sqrt(d);
     x1 = ((-b) + d) / (2 * a);
     x2 = ((-b) - d) / (2 * a);
