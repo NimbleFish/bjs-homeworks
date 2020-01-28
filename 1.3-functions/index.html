@@ -3,17 +3,42 @@
     <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <meta http-equiv="X-UA-Compatible" content="ie=edge"> <title>Функции и объекты JavaScript</title>
 </head>
 <body>
-  <style media="screen"> .one_container { display: flex; flex-direction: column; width: 20%; } .one_container input { margin-bottom: 5%; text-align: center; } .one_container span#expression { margin-bottom: 5%; } .one_container span#result { margin-top: 5%; } </style>
+  <style media="screen">
+    .one_container {
+      display: flex;
+      flex-direction: column;
+      width: 20%;
+    }
+
+    .one_container input {
+      margin-bottom: 5%;
+      text-align: center;
+    }
+
+    .one_container span#expression {
+      margin-bottom: 5%;
+    }
+
+    .one_container span#result {
+      margin-top: 5%;
+    }
+  </style>
 
   <div class="one_container">
     <input type="number" placeholder="a" id="a">
     <input type="number" placeholder="b" id="b">
     <input type="number" placeholder="c" id="c">
-    <span id="expression"></span>
+    <span id="expression"></span><span id="discriminant"></span>
     <button onClick="calculate()">Посчтитать!</button>
-    <span id="result"></span>
+    <div id="result">
+      <div id="text"></div>
+      <div id="x1"></div>
+      <div id="x2"></div>
+    </div>
   </div>
 
-  <script src="main.js"></script>
+
+  <script type="text/javascript" src="system.js"></script>
+  <script type="text/javascript" src="main.js"></script>
 </body>
 </html>

@@ -1,28 +1,22 @@
 "use strict"
-function calculate() {
-  let a = +window.a.value, b = +window.b.value, c = +window.c.value, result = showSolutionsMessage(a, b, c), span = window.result;
-  window.expression.textContent = `${a}x² + (${b})x + (${c}) = 0`;
-  span.textContent = '' + result;
-}
-
 function showSolutionsMessage(a, b, c) {
   if (a == '' || a == '0' || b == '' || b == '0') {
-    return 'Пожалуйста, введите знчаения a и b!';
+    return { 'd' : 'Не существует', 'text' : 'Пожалуйста, введите знчаения a и b!' };
   }
   console.log(`Вычисляем корни квадратного уравнения ${a}x² + (${b})x + (${c}) = 0\n`);
   let result = getSolutions(a, b, c);
   console.log(`Значение дискриминанта: ${result.d}`);
   if (result.d < 0) {
     console.log('Уравнение не имеет вещественных корней\n');
-    return 'Нет корней!'
+    return { 'd' : result.d, 'text' : 'Нет корней!' }
   }
   else if (result.d == 0) {
     console.log(`Уравнение имеет один корень X₁ = ${result.roots[0]} \n`);
-    return `Уравнение имеет один корень X₁ = ${result.roots[0]}`;
+    return { 'd' : result.d, 'text' : 'Уравнение имеет один корень: ', 'x1' : `X1: ${result.roots[0]}` };
   }
   else {
-    console.log(`Уравнение имеет два корня. X₁ = ${result.roots[0]}, X₂ = ${result.roots[1]} \n`);
-    return `Уравнение имеет два корня. X₁ = ${result.roots[0]}, X₂ = ${result.roots[1]}`;
+    console.log(`Уравнение имеет два корня: X₁ = ${result.roots[0]}, X₂ = ${result.roots[1]} \n`);
+    return { 'd' : result.d, 'text' : 'Уравнение имеет два корня: ', 'x1' : `X1: ${result.roots[0]}`, 'x2' : `X2: ${result.roots[1]}` };
   }
 }
 
