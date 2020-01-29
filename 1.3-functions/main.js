@@ -33,3 +33,28 @@ function getSolutions(a, b, c) {
   result = { 'roots' : [x1, x2], 'd' : d }
   return result;
 }
+
+function getAverageScore(data) {
+  let assessments = {}, sum = {};
+
+  for (let key in data) {
+    assessments[key] = sum[key] + data[key];
+  }
+
+  for (let del in assessments) {
+    assessments[del] = assessments[del] / assessments[del].length;
+  }
+
+  for (let nall in assessments) {
+    assessments.nall = assessments[nall] + sum.nall;
+  }
+
+  for (let end in assessments) {
+    assessments.end = assessments[end].length + sum.length;
+  }
+
+  for (var all in assessments) {
+    assessments.all = assessments.nall / assessments.end
+  }
+  return assessments;
+}

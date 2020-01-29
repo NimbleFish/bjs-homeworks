@@ -4,27 +4,31 @@
 </head>
 <body>
   <style media="screen">
-    .one_container {
+    #one_container, #two_container {
       display: flex;
       flex-direction: column;
       width: 20%;
     }
 
-    .one_container input {
+    #two_container {
+      margin-top: 3%;
+    }
+
+    #one_container input,  #two_container input{
       margin-bottom: 5%;
       text-align: center;
     }
 
-    .one_container span#expression {
+    #one_container span#expression {
       margin-bottom: 5%;
     }
 
-    .one_container span#result {
+    #one_container span#result {
       margin-top: 5%;
     }
   </style>
 
-  <div class="one_container">
+  <div id="one_container">
     <input type="number" placeholder="a" id="a">
     <input type="number" placeholder="b" id="b">
     <input type="number" placeholder="c" id="c">
@@ -37,6 +41,20 @@
     </div>
   </div>
 
+  <div id="two_container">
+    <input type="number" value="12322" placeholder="Алгебра" id="algebra">        <span id="result_algebra"></span>
+    <input type="number" value="33435" placeholder="Геометрия" id="geometry">     <span id="result_geometry"></span>
+    <input type="number" value="23343" placeholder="Русский" id="russian">        <span id="result_russian"></span>
+    <input type="number" value="45433" placeholder="Физика" id="physics">         <span id="result_physics"></span>
+    <input type="number" value="35232" placeholder="Музыка" id="music">           <span id="result_music"></span>
+    <input type="number" value="34342" placeholder="Английский" id="english">     <span id="result_english"></span>
+    <input type="number" value="54435" placeholder="Химия" id="chemistry">        <span id="result_chemistry"></span>
+    <input type="number" value="23535" placeholder="Немецкий" id="german">        <span id="result_german"></span>
+    <input type="number" value="45352" placeholder="Литература" id="literature">  <span id="result_literature"></span>
+    <input type="number" value="34532" placeholder="Информатика" id="informatics"><span id="result_informatics"></span>
+    <button onClick="calculateAverageRating()">Посчтитать!</button>
+    <span id="result_all"></span>
+  </div>
 
   <script type="text/javascript" src="system.js"></script>
   <script type="text/javascript" src="main.js"></script>
