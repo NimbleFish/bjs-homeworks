@@ -35,26 +35,58 @@ function getSolutions(a, b, c) {
 }
 
 function getAverageScore(data) {
-  let assessments = {}, sum = {};
+let  sum = {
+          'all'  : {
+                    'sum'         : 0,
+                    'len'         : 0,
+                    'res'         : 0,
+                  },
+          'pred' : {
+                    'algebra'     : 0,
+                    'geometry'    : 0,
+                    'russian'     : 0,
+                    'physics'     : 0,
+                    'music'       : 0,
+                    'english'     : 0,
+                    'chemistry'   : 0,
+                    'german'      : 0,
+                    'literature'  : 0,
+                    'informatics' : 0,
+                  },
+          'len' : {
+                    'algebra'     : 0,
+                    'geometry'    : 0,
+                    'russian'     : 0,
+                    'physics'     : 0,
+                    'music'       : 0,
+                    'english'     : 0,
+                    'chemistry'   : 0,
+                    'german'      : 0,
+                    'literature'  : 0,
+                    'informatics' : 0,
+                  },
+        'algebra'     : 0,
+        'geometry'    : 0,
+        'russian'     : 0,
+        'physics'     : 0,
+        'music'       : 0,
+        'english'     : 0,
+        'chemistry'   : 0,
+        'german'      : 0,
+        'literature'  : 0,
+        'informatics' : 0,
+        }
 
   for (let key in data) {
-    assessments[key] = sum[key] + data[key];
+    for (let i = 0; i < data[key].length; i++) {
+      sum.pred[key] += data[key][i];
+      sum.len[key] = data[key].length;
+      sum[key] = sum.pred[key] / sum.len[key];
+      sum.all.sum += data[key][i];
+    }
+    sum.all.len += sum.len[key];
+    sum.all.res = sum.all.sum / sum.all.len;
   }
 
-  for (let del in assessments) {
-    assessments[del] = assessments[del] / assessments[del].length;
-  }
-
-  for (let nall in assessments) {
-    assessments.nall = assessments[nall] + sum.nall;
-  }
-
-  for (let end in assessments) {
-    assessments.end = assessments[end].length + sum.length;
-  }
-
-  for (var all in assessments) {
-    assessments.all = assessments.nall / assessments.end
-  }
-  return assessments;
+  return sum;
 }

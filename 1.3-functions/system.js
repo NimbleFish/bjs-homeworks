@@ -7,8 +7,8 @@ function calculate() {
   div.children.x2.textContent = result.x2;
 }
 
-function calculateAverageRating(){
-  let data, datan, estimation;
+function calculateAverageRating() {
+  let data, estimation, value = {};
   data = { 'algebra'     :  window.algebra.value.split(""),
            'geometry'    :  window.geometry.value.split(""),
            'russian'     :  window.russian.value.split(""),
@@ -21,30 +21,24 @@ function calculateAverageRating(){
            'informatics' :  window.informatics.value.split(""),
   }
 
-let value = [];
-
   for (let prop in data) {
-    let i;
-    for (i = 0; i < prop.length; i++) {
-       value[i] = parseInt(data[prop][i]);
-       if (isNaN(value[i])) {
-         value[i] = 0;
-       }
-    };
-    data[prop] = { [prop] : value[i] };
+      for (let i = 0; i < data[prop].length; i++) {
+        data[prop][i] = parseInt(data[prop][i]);
+        value[prop] = data[prop];
+      }
   }
 
-  estimation = getAverageScore(data);
+  estimation = getAverageScore(value);
 
-  window.result_algebra.textContent = estimation.algebra;
-  window.result_geometry.textContent = estimation.geometry;
-  window.result_russian.textContent = estimation.russian;
-  window.result_physics.textContent = estimation.physics;
-  window.result_music.textContent = estimation.music;
-  window.result_english.textContent = estimation.english;
-  window.result_chemistry.textContent = estimation.chemistry;
-  window.result_german.textContent = estimation.german;
-  window.result_literature.textContent = estimation.literature;
-  window.result_informatics.textContent = estimation.informatics;
-  window.result_all.textContent = estimation.all;
+  window.result_algebra.textContent = 'Алгебра: ' + estimation.algebra;
+  window.result_geometry.textContent = 'Геометрия: ' + estimation.geometry;
+  window.result_russian.textContent = 'Русский: ' + estimation.russian;
+  window.result_physics.textContent = 'Физика: ' + estimation.physics;
+  window.result_music.textContent = 'Музыка: ' + estimation.music;
+  window.result_english.textContent = 'Английский: ' + estimation.english;
+  window.result_chemistry.textContent = 'Химия: ' + estimation.chemistry;
+  window.result_german.textContent = 'Немецкий: ' + estimation.german;
+  window.result_literature.textContent = 'Литература: ' + estimation.literature;
+  window.result_informatics.textContent = 'Информатика: ' + estimation.informatics;
+  window.result_all.textContent = 'Общая оценка: ' + estimation.all.res;
 }
