@@ -85,8 +85,12 @@ let  sum = {
       sum.all.sum += data[key][i];
     }
     sum.all.len += sum.len[key];
-    sum.all.res = sum.all.sum / sum.all.len;
+    sum.all.res = getAverageMark(sum);
   }
-
+  console.log(sum);
   return sum;
+}
+
+function getAverageMark(sum) {
+  return sum.all.sum / sum.all.len;;
 }

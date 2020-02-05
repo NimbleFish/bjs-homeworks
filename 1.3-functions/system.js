@@ -8,7 +8,7 @@ function calculate() {
 }
 
 function calculateAverageRating() {
-  let data, estimation, value = {};
+  let data, estimation, value = {}, avarage;
   data = { 'algebra'     :  window.algebra.value.split(""),
            'geometry'    :  window.geometry.value.split(""),
            'russian'     :  window.russian.value.split(""),
@@ -29,6 +29,7 @@ function calculateAverageRating() {
   }
 
   estimation = getAverageScore(value);
+  avarage = getAverageMark(estimation);
 
   window.result_algebra.textContent = 'Алгебра: ' + estimation.algebra;
   window.result_geometry.textContent = 'Геометрия: ' + estimation.geometry;
