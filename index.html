@@ -11,7 +11,11 @@
         justify-content: center;
       }
 
-      div.first {
+      .nav {
+        display: flex; justify-content: space-around;
+      }
+
+      .first, .two {
         display: flex;
         flex-direction: column;
         border: 2px solid green;
@@ -24,11 +28,20 @@
 
     <h1>Навигация по домашним заданиям блока JavaScript</h1>
 
-    <div class="first">
-      <h2>Основы языка и синтаксиса JavaScript</h2>
-      <a href="/bjs-homeworks/1.1-variables/">Базовый синтаксис JavaScript</a>
-      <a href="/bjs-homeworks/1.2-extended-syntax/">Продвинутый синтаксис JavaScript</a>
-      <a href="/bjs-homeworks/1.3-functions">Функции, объекты в JavaScript</a>
+    <div class="nav">
+      <div class="first">
+        <h2>Основы языка и синтаксиса JavaScript</h2>
+        <a href="/bjs-homeworks/1.1-variables/">Базовый синтаксис JavaScript</a>
+        <a href="/bjs-homeworks/1.2-extended-syntax/">Продвинутый синтаксис JavaScript</a>
+        <a href="/bjs-homeworks/1.3-functions">Функции, объекты в JavaScript</a>
+      </div>
+
+      <div class="two">
+        <h2>Объекты и ООП в Javascript</h2>
+        <a href="/bjs-homeworks/2.1-wrappers-for-primitives/nav.html">Обертки для примитивов</a>
+        <a href="/bjs-homeworks/#">Прототип и конструктор объекта</a>
+        <a href="/bjs-homeworks/#">ООП в JS (ES6)</a>
+      </div>
     </div>
   </body>
 </html>
