@@ -4,15 +4,15 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
   if (isNaN(Number(percent))) {
     console.log('Параметр "Процентная ставка" содержит неправильное значение ' + window.percent.value);
     return 'Параметр "Процентная ставка" содержит неправильное значение ' + window.percent.value;
-  };
+  }
   if (isNaN(Number(contribution))) {
     console.log('Параметр "Начальный взнос" содержит неправильное значение ' + window.contribution.value);
     return 'Параметр "Начальный взнос" содержит неправильное значение ' + window.contribution.value;
-  };
+  }
   if (isNaN(Number(amount))) {
     console.log('Параметр "Общая стоимость" содержит неправильное значение ' + window.amount.value);
     return 'Параметр "Общая стоимость" содержит неправильное значение ' + window.amount.value;
-  };
+  }
   if (isNaN(date)) {
     console.log('Пожалуйста, выберите параметр "Срок дейтсвия ипотеки"');
     return 'Пожалуйста, выберите параметр "Срок дейтсвия ипотеки"';
@@ -25,7 +25,7 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
   date = {
     'month' : new Date(date).getMonth() + 1,
     'year' : new Date(date).getFullYear(),
-  };
+  }
 
   let dateCurrent = {
     'month' : new Date().getMonth() + 1,
@@ -50,11 +50,11 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
 }
 
 function getGreeting(name) {
-  if (name == '') {
+  if (name == '' || name == null || name == undefined) {
     name = 'Аноним';
   }
 
-  // greeting =
-  // console.log(greeting);
-  // return greeting;
+  let greeting = `Привет, мир! Меня зовут ${name}`;
+  console.log(greeting);
+  return greeting;
 }
