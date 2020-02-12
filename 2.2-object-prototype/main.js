@@ -20,8 +20,12 @@ function initCalculateStatement() {
 
 function initCheckBirthday() {
     const birthday = document.getElementById('birthday').value;
-
     const result = checkBirthday(birthday) ? "Да" : "Нет";
 
-    document.getElementById('disclaimer').innerHTML = result;
+    if (birthday == null || birthday == '' || birthday.empty) {
+      document.getElementById('disclaimer').innerHTML = 'Введите дату рождения!'
+    }
+    else {
+      document.getElementById('disclaimer').innerHTML = result;
+    }
 }
