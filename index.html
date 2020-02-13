@@ -7,26 +7,23 @@
   <body>
     <style media="screen">
       h1 {
-        display: flex;
-        justify-content: center;
+        display: flex; justify-content: center;
       }
 
       .nav {
         display: flex; justify-content: space-around;
       }
 
-      .first, .two {
-        display: flex;
-        flex-direction: column;
-        border: 2px solid green;
-        box-sizing: border-box;
-        width: 40vw;
-        padding-left: 1vw;
-        padding-bottom: 1vw;
+      .diplom {
+        border: 3px solid red; display: flex; align-items: center; flex-direction: column;
+      }
+
+      .first, .two, .tree {
+        display: flex; flex-direction: column; border: 2px solid green; box-sizing: border-box; width: 40vw; padding-left: 1vw; padding-bottom: 1vw;
       }
     </style>
 
-    <h1>Навигация по домашним заданиям блока JavaScript</h1>
+    <h1>Навигация по домашним заданиям блока "Основы JavaScript"</h1>
 
     <div class="nav">
       <div class="first">
@@ -40,8 +37,18 @@
         <h2>Объекты и ООП в Javascript</h2>
         <a href="/bjs-homeworks/2.1-wrappers-for-primitives/nav.html">Обертки для примитивов</a>
         <a href="/bjs-homeworks/2.2-object-prototype/nav.html">Прототип и конструктор объекта</a>
-        <a href="/bjs-homeworks/#">ООП в JS (ES6)</a>
+        <a href="/bjs-homeworks/2.3-oop-es6/nav.html">ООП в JS (ES6)</a>
       </div>
+
+      <div class="tree">
+        <h2>Продвинутые функции JS</h2>
+        <a href="#">Прототип массива, функции высшего порядка</a>
+        <a href="#">Асинхронность</a>
+      </div>
+    </div>
+    <div class="diplom">
+      <h2>Дипломный проект</h2>
+      <a href="/bjs-homeworks/#">Дипломный проект</a>
     </div>
   </body>
 </html>
