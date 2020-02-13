@@ -5,7 +5,40 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Homework</title>
 </head>
-<body>
+<body
+  <div class="task_1">
+    <div class="in" style="margin-bottom: 1%;">
+      <h2>Оружие</h2>
+      <select id="select" name="select">
+        <option value="" selected></option>
+        <option value="hand">Рука</option>
+        <option value="bow">Лук</option>
+        <option value="sword">Меч</option>
+        <option value="knife">Нож</option>
+        <option value="staff">Посох</option>
+        <option value="super_longBow">Длинный лук</option>
+        <option value="super_ax">Секира</option>
+        <option value="super_straff">Посох Бури</option>
+      </select>
+      <span id="alerted">Пожалуйста, выберите оружие</span>
+    </div>
+    <div id="specifications">
+      <span style="display: block"><h3 style="display: inline;">Характеристики:</h3><input style="margin-left: 1%; width: 185px;" type="number" id="damaged" placeholder="Введите получаемый урон"></span>
+      <span style="display: block;"><span>Оружие: </span><span id="weaponed"></span></span>
+      <span style="display: block;"><span>Атака: </span><span id="attacked"></span></span>
+      <span style="display: block;"><span>Прочность: </span><span id="durabilited"></span></span>
+      <span style="display: block;"><span>Дистанция: </span><span id="distanced"></span></span>
+      <span style="display: block;"><span>Статус: </span><span id="statused"></span></span>
+    </div>
+    <button type="button" onclick="damageWeapon('get')" value="get" id="beat">Ударить</button>
+    <button type="button" onclick="damageWeapon('give')" value="give" id="beating">Получить леща</button>
+  </div>
+  <hr></hr>
+
+  <div class="task_3">
+
+  </div>
+
   <script src="system.js"></script>
   <script src="task.js"></script>
 </body>
