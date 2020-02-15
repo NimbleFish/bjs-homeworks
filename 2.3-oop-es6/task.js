@@ -40,16 +40,6 @@ class Weapon {
   }
 }
 
-// const hand = new Weapon('Рука', 1, Infinity, 1);
-// const bow = new Weapon('Лук', 10, 200, 3);
-// const sword = new Weapon('Меч', 25, 500, 1);
-// const knife = new Weapon('Нож', 5, 300, 1);
-// const staff = new Weapon('Посох', 8, 300, 2);
-//
-// const super_longBow = new Weapon('Длинный лук', 15, 200, 4);
-// const super_ax = new Weapon('Секира', 27, 800, 1);
-// const super_straff = new Weapon('Посох Бури', 10, 300, 2);
-
 let name = '';
 
 function weapons(weapon) {
@@ -110,3 +100,242 @@ function damageWeapon(what) {
 
 // Задача №2
 console.log('Задача №2');
+
+class Hand {
+  constructor() {
+    const hand = new Weapon({'name':'Рука', 'attack':1, 'durability':Infinity, 'range':1});
+    this.name = hand.name;
+    this.attack = hand.attack;
+    this.durability = hand.durability;
+    this.mindDurability = hand.durability;
+    this.range = hand.range
+  }
+
+  takeDamage() {
+    Weapon.takeDamage(window.damaged.value);
+  }
+
+  getDamage() {
+    Weapon.getDamage();
+  }
+
+  isBroken() {
+    Weapon.isBroken();
+  }
+}
+
+class Bow {
+  constructor() {
+    const bow = new Weapon({'name':'Лук', 'attack':10, 'durability':200, 'range':3});
+    this.name = bow.name;
+    this.attack = bow.attack;
+    this.durability = bow.durability;
+    this.mindDurability = bow.durability;
+    this.range = bow.range
+  }
+
+  takeDamage() {
+    Weapon.takeDamage(window.damaged.value);
+  }
+
+  getDamage() {
+    Weapon.getDamage();
+  }
+
+  isBroken() {
+    Weapon.isBroken();
+  }
+}
+
+class Sword {
+  constructor() {
+    const sword = new Weapon({'name':'Меч', 'attack':25, 'durability':500, 'range':1});
+    this.name = sword.name;
+    this.attack = sword.attack;
+    this.durability = sword.durability;
+    this.mindDurability = sword.durability;
+    this.range = sword.range
+  }
+
+  takeDamage() {
+    Weapon.takeDamage(window.damaged.value);
+  }
+
+  getDamage() {
+    Weapon.getDamage();
+  }
+
+  isBroken() {
+    Weapon.isBroken();
+  }
+}
+
+class Knife {
+  constructor() {
+    const knife = new Weapon({'name':'Нож', 'attack':5, 'durability':300, 'range':1});
+    this.name = knife.name;
+    this.attack = knife.attack;
+    this.durability = knife.durability;
+    this.mindDurability = knife.durability;
+    this.range = knife.range
+  }
+
+  takeDamage() {
+    Weapon.takeDamage(window.damaged.value);
+  }
+
+  getDamage() {
+    Weapon.getDamage();
+  }
+
+  isBroken() {
+    Weapon.isBroken();
+  }
+}
+
+class Staff {
+  constructor() {
+    const staff = new Weapon({'name':'Посох', 'attack':8, 'durability':300, 'range':2});
+    this.name = staff.name;
+    this.attack = staff.attack;
+    this.durability = staff.durability;
+    this.mindDurability = staff.durability;
+    this.range = staff.range
+  }
+
+  takeDamage() {
+    Weapon.takeDamage(window.damaged.value);
+  }
+
+  getDamage() {
+    Weapon.getDamage();
+  }
+
+  isBroken() {
+    Weapon.isBroken();
+  }
+}
+
+class LongBow {
+  constructor() {
+    const longBow = new Bow();
+    this.name = 'Длинный лук';
+    this.attack = 15;
+    this.durability = longBow.durability;
+    this.range = 4;
+  }
+
+  takeDamage() {
+    Weapon.takeDamage(window.damaged.value);
+  }
+
+  getDamage() {
+    Weapon.getDamage();
+  }
+
+  isBroken() {
+    Weapon.isBroken();
+  }
+}
+
+class Ax {
+  constructor() {
+    const ax = new Sword();
+    this.name = 'Секира';
+    this.attack = 27;
+    this.durability = 800;
+    this.range = ax.range;
+  }
+
+  takeDamage() {
+    Weapon.takeDamage(window.damaged.value);
+  }
+
+  getDamage() {
+    Weapon.getDamage();
+  }
+
+  isBroken() {
+    Weapon.isBroken();
+  }
+}
+
+class SuperStaff {
+  constructor() {
+    const superStaff = new Staff();
+    this.name = 'Посох Бури';
+    this.attack = 10;
+    this.durability = superStaff.durability;
+    this.range = 3;
+  }
+
+  takeDamage() {
+    Weapon.takeDamage(window.damaged.value);
+  }
+
+  getDamage() {
+    Weapon.getDamage();
+  }
+
+  isBroken() {
+    Weapon.isBroken();
+  }
+}
+
+const $hand = new Hand();
+const $bow = new Bow();
+const $sword = new Sword();
+const $knife = new Knife();
+const $staff = new Staff();
+const $longBow = new LongBow();
+const $axe = new Ax();
+const $superStaff = new SuperStaff();
+
+console.log('Оружие: Рука');
+console.log('Название: ' + $hand.name);
+console.log('Атака: ' + $hand.attack);
+console.log('Прочность: ' + $hand.durability);
+console.log('Дистанция: ' + $hand.range);
+console.log('----------------------------------------------');
+console.log('Оружие: Лук');
+console.log('Название: ' + $bow.name);
+console.log('Атака: ' + $bow.attack);
+console.log('Прочность: ' + $bow.durability);
+console.log('Дистанция: ' + $bow.range);
+console.log('----------------------------------------------');
+console.log('Оружие: Меч');
+console.log('Название: ' + $sword.name);
+console.log('Атака: ' + $sword.attack);
+console.log('Прочность: ' + $sword.durability);
+console.log('Дистанция: ' + $sword.range);
+console.log('----------------------------------------------');
+console.log('Оружие: Нож');
+console.log('Название: ' + $knife.name);
+console.log('Атака: ' + $knife.attack);
+console.log('Прочность: ' + $knife.durability);
+console.log('Дистанция: ' + $knife.range);
+console.log('----------------------------------------------');
+console.log('Оружие: Посох');
+console.log('Название: ' + $staff.name);
+console.log('Атака: ' + $staff.attack);
+console.log('Прочность: ' + $staff.durability);
+console.log('Дистанция: ' + $staff.range);
+console.log('----------------------------------------------');
+console.log('Оружие: Длинный лук');
+console.log('Название: ' + $longBow.name);
+console.log('Атака: ' + $longBow.attack);
+console.log('Прочность: ' + $longBow.durability);
+console.log('Дистанция: ' + $longBow.range);
+console.log('----------------------------------------------');
+console.log('Оружие: Секира');
+console.log('Название: ' + $axe.name);
+console.log('Атака: ' + $axe.attack);
+console.log('Прочность: ' + $axe.durability);
+console.log('Дистанция: ' + $axe.range);
+console.log('----------------------------------------------');
+console.log('Оружие: Посох Бури');
+console.log('Название: ' + $superStaff.name);
+console.log('Атака: ' + $superStaff.attack);
+console.log('Прочность: ' + $superStaff.durability);
+console.log('Дистанция: ' + $superStaff.range);
+console.log('----------------------------------------------');
