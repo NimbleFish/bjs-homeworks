@@ -27,15 +27,20 @@ function checkBirthday(birthday) {
     now = `${date.getDay()} ${date.getMonth()+1} ${date.getFullYear()}`, diff=0;
     birthday[0] = m; birthday[2] = h; delete(m); delete(h);
     age = date.getFullYear() - parseInt(birthday[2]);
-    for (let k=0; k<age; k++) {
-      if (parseInt(birthday[2])%4 == 0) {
-        //Считыет высокосный год
-        currentYear = currentYear + nStanadrtYear;
-      }
-      else {
-        currentYear = currentYear + standYear;
-      }
+    // for (let k=0; k<age; k++) {
+    //   if (parseInt(birthday[2])%4 == 0) {
+    //     //Считыет высокосный год
+    //     currentYear = currentYear + nStanadrtYear;
+    //   }
+    //   else {
+    //     currentYear = currentYear + standYear;
+    //   }
+    // }
+    console.log(age);
+    if (age >= 18) {
+      return true;
     }
-    console.log(currentYear);
-    // return verdict
+    else {
+      return false;
+    }
 }
