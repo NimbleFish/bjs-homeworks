@@ -101,184 +101,51 @@ function damageWeapon(what) {
 // Задача №2
 console.log('Задача №2');
 
-class Hand {
+class Hand extends Weapon {
   constructor() {
-    const hand = new Weapon({'name':'Рука', 'attack':1, 'durability':Infinity, 'range':1});
-    this.name = hand.name;
-    this.attack = hand.attack;
-    this.durability = hand.durability;
-    this.mindDurability = hand.durability;
-    this.range = hand.range
-  }
-
-  takeDamage() {
-    Weapon.takeDamage(window.damaged.value);
-  }
-
-  getDamage() {
-    Weapon.getDamage();
-  }
-
-  isBroken() {
-    Weapon.isBroken();
+    super({'name':'Рука', 'attack':1, 'durability':Infinity, 'range':1});
   }
 }
 
-class Bow {
+class Bow extends Weapon {
   constructor() {
-    const bow = new Weapon({'name':'Лук', 'attack':10, 'durability':200, 'range':3});
-    this.name = bow.name;
-    this.attack = bow.attack;
-    this.durability = bow.durability;
-    this.mindDurability = bow.durability;
-    this.range = bow.range
-  }
-
-  takeDamage() {
-    Weapon.takeDamage(window.damaged.value);
-  }
-
-  getDamage() {
-    Weapon.getDamage();
-  }
-
-  isBroken() {
-    Weapon.isBroken();
+    super({'name':'Лук', 'attack':10, 'durability':200, 'range':3});
   }
 }
 
-class Sword {
+class Sword extends Weapon {
   constructor() {
-    const sword = new Weapon({'name':'Меч', 'attack':25, 'durability':500, 'range':1});
-    this.name = sword.name;
-    this.attack = sword.attack;
-    this.durability = sword.durability;
-    this.mindDurability = sword.durability;
-    this.range = sword.range
-  }
-
-  takeDamage() {
-    Weapon.takeDamage(window.damaged.value);
-  }
-
-  getDamage() {
-    Weapon.getDamage();
-  }
-
-  isBroken() {
-    Weapon.isBroken();
+    super({'name':'Меч', 'attack':25, 'durability':500, 'range':1});
   }
 }
 
-class Knife {
+class Knife extends Weapon {
   constructor() {
-    const knife = new Weapon({'name':'Нож', 'attack':5, 'durability':300, 'range':1});
-    this.name = knife.name;
-    this.attack = knife.attack;
-    this.durability = knife.durability;
-    this.mindDurability = knife.durability;
-    this.range = knife.range
-  }
-
-  takeDamage() {
-    Weapon.takeDamage(window.damaged.value);
-  }
-
-  getDamage() {
-    Weapon.getDamage();
-  }
-
-  isBroken() {
-    Weapon.isBroken();
+    super({'name':'Нож', 'attack':5, 'durability':300, 'range':1});
   }
 }
 
-class Staff {
+class Staff extends Weapon {
   constructor() {
-    const staff = new Weapon({'name':'Посох', 'attack':8, 'durability':300, 'range':2});
-    this.name = staff.name;
-    this.attack = staff.attack;
-    this.durability = staff.durability;
-    this.mindDurability = staff.durability;
-    this.range = staff.range
-  }
-
-  takeDamage() {
-    Weapon.takeDamage(window.damaged.value);
-  }
-
-  getDamage() {
-    Weapon.getDamage();
-  }
-
-  isBroken() {
-    Weapon.isBroken();
+    super({'name':'Посох', 'attack':8, 'durability':300, 'range':2});
   }
 }
 
-class LongBow {
+class LongBow extends Bow {
   constructor() {
-    const longBow = new Bow();
-    this.name = 'Длинный лук';
-    this.attack = 15;
-    this.durability = longBow.durability;
-    this.range = 4;
-  }
-
-  takeDamage() {
-    Weapon.takeDamage(window.damaged.value);
-  }
-
-  getDamage() {
-    Weapon.getDamage();
-  }
-
-  isBroken() {
-    Weapon.isBroken();
+    super({'name':'Длинный лук', 'attack':15, 'range':4});
   }
 }
 
-class Ax {
+class Ax extends Sword {
   constructor() {
-    const ax = new Sword();
-    this.name = 'Секира';
-    this.attack = 27;
-    this.durability = 800;
-    this.range = ax.range;
-  }
-
-  takeDamage() {
-    Weapon.takeDamage(window.damaged.value);
-  }
-
-  getDamage() {
-    Weapon.getDamage();
-  }
-
-  isBroken() {
-    Weapon.isBroken();
+    super({'name':'Секира', 'attack':27, 'durability':800});
   }
 }
 
-class SuperStaff {
+class SuperStaff extends Staff {
   constructor() {
-    const superStaff = new Staff();
-    this.name = 'Посох Бури';
-    this.attack = 10;
-    this.durability = superStaff.durability;
-    this.range = 3;
-  }
-
-  takeDamage() {
-    Weapon.takeDamage(window.damaged.value);
-  }
-
-  getDamage() {
-    Weapon.getDamage();
-  }
-
-  isBroken() {
-    Weapon.isBroken();
+    super({'name':'Посох Бури', 'attack':10, 'range':3});
   }
 }
 
@@ -322,19 +189,19 @@ console.log('Прочность: ' + $staff.durability);
 console.log('Дистанция: ' + $staff.range);
 console.log('----------------------------------------------');
 console.log('Оружие: Длинный лук');
-console.log('Название: ' + $longBow.name);
+console.log('Наследован от: ' + $longBow.name);
 console.log('Атака: ' + $longBow.attack);
 console.log('Прочность: ' + $longBow.durability);
 console.log('Дистанция: ' + $longBow.range);
 console.log('----------------------------------------------');
 console.log('Оружие: Секира');
-console.log('Название: ' + $axe.name);
+console.log('Наследован от: ' + $axe.name);
 console.log('Атака: ' + $axe.attack);
 console.log('Прочность: ' + $axe.durability);
 console.log('Дистанция: ' + $axe.range);
 console.log('----------------------------------------------');
 console.log('Оружие: Посох Бури');
-console.log('Название: ' + $superStaff.name);
+console.log('Наследован от: ' + $superStaff.name);
 console.log('Атака: ' + $superStaff.attack);
 console.log('Прочность: ' + $superStaff.durability);
 console.log('Дистанция: ' + $superStaff.range);
