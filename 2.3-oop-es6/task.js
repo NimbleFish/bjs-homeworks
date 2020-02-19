@@ -133,19 +133,28 @@ class Staff extends Weapon {
 
 class LongBow extends Bow {
   constructor() {
-    super({'name':'Длинный лук', 'attack':15, 'range':4});
+    super();
+    this.name = 'Длинный лук';
+    this.attack = 15;
+    this.range = 4;
   }
 }
 
 class Ax extends Sword {
   constructor() {
-    super({'name':'Секира', 'attack':27, 'durability':800});
+    super();
+    this.name = 'Секира';
+    this.attack = 27;
+    this.durability = 800;
   }
 }
 
 class SuperStaff extends Staff {
   constructor() {
-    super({'name':'Посох Бури', 'attack':10, 'range':3});
+    super();
+    this.name = 'Посох Бури';
+    this.attack = 10;
+    this.range = 3;
   }
 }
 
@@ -189,19 +198,19 @@ console.log('Прочность: ' + $staff.durability);
 console.log('Дистанция: ' + $staff.range);
 console.log('----------------------------------------------');
 console.log('Оружие: Длинный лук');
-console.log('Наследован от: ' + $longBow.name);
+console.log('Название: ' + $longBow.name);
 console.log('Атака: ' + $longBow.attack);
 console.log('Прочность: ' + $longBow.durability);
 console.log('Дистанция: ' + $longBow.range);
 console.log('----------------------------------------------');
 console.log('Оружие: Секира');
-console.log('Наследован от: ' + $axe.name);
+console.log('Название: ' + $axe.name);
 console.log('Атака: ' + $axe.attack);
 console.log('Прочность: ' + $axe.durability);
 console.log('Дистанция: ' + $axe.range);
 console.log('----------------------------------------------');
 console.log('Оружие: Посох Бури');
-console.log('Наследован от: ' + $superStaff.name);
+console.log('Название: ' + $superStaff.name);
 console.log('Атака: ' + $superStaff.attack);
 console.log('Прочность: ' + $superStaff.durability);
 console.log('Дистанция: ' + $superStaff.range);
