@@ -1,4 +1,3 @@
-//Code задача: https://github.com/netology-code/bjs-homeworks/tree/master/3.1-array-proto-hocs
 function sleep(milliseconds) {
   let sleep = new Date().getTime() + milliseconds;
   while(new Date.getTime() <= sleep) {};
