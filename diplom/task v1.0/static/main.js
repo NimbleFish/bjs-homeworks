@@ -8,7 +8,7 @@ class Profile {
       this.password = password;
 
 //Создать профиль - new Profile('NimbleFish', {'firstName':'Юрий','lastName':'Карпов'}, '1002071');
-
+//Курс валют - ApiConnector.getStocks((...args)=>{console.log(args[1]);});
       this.addUser( {'username':this.username, 'name':{'firstName':this.name.firstName,'lastName':this.name.lastName}, 'password':this.password}, (err, data) => {
         if(err) {
           console.error(`Ошибка ${err.code} при создании пользователя ${this.username}; Статус: ${err.message}`);
@@ -49,5 +49,8 @@ class Profile {
 }
 
 function getValute() {
-  ApiConnector.getStocks(callback);
+  ApiConnector.getStocks((...args)=>{
+    let valutes = args[1];
+    console.log(valutes);
+  });
 }
