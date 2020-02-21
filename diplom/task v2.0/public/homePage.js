@@ -66,9 +66,18 @@ moneyManager.conversionMoneyCallback = ({fromCurrency, targetCurrency, fromAmoun
 }
 
 //перевод валюты
-moneyManager.sendMoneyCallback = (result)=>{
-  console.log(result);
-  ApiConnector.transferMoney();
+moneyManager.sendMoneyCallback = ({to, amount, currency})=>{
+  ApiConnector.transferMoney({to, currency, amount}, (...args)=>{
+    console.log(args);
+    if(args[0].success == true) {
+      ProfileWidget.showProfile(args[0].data);
+      console.log(`Вы перевели ${currency} ${amount} пользователю с id: ${to}`);
+      moneyManager.setMessage(args.success, `Вы перевели ${currency} ${amount} пользователю с id: ${to}`);
+    } else {
+      moneyManager.setMessage(args.success, `Ошибка перевода ${currency} ${amount}`);
+      console.error(`Ошибка перевода ${currency} ${amount}`);
+    }
+  });
 }
 
 //Список избранного
