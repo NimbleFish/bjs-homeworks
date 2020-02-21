@@ -85,6 +85,9 @@ ApiConnector.getFavorites((result)=>{
 favoritesWidget.addUserCallback = ({id, name})=>{
   ApiConnector.addUserToFavorites({id, name}, (...args)=>{
     if(args[0].success == true) {
+      favoritesWidget.clearTable();
+      favoritesWidget.fillTable(args[0].data);
+      moneyManager.updateUsersList(args[0].data);
       console.log(`${name} с id ${id} Успешно добавлен в избранное`);
       favoritesWidget.setMessage(args[0].success, `${name} с id ${id} Успешно добавлен в избранное`);
     } else {
@@ -95,3 +98,18 @@ favoritesWidget.addUserCallback = ({id, name})=>{
 }
 
 //Удаления из избранного
+favoritesWidget.removeUserCallback = (id)=>{
+  ApiConnector.removeUserFromFavorites(id, (result)=>{
+    if(result.success == true) {
+      favoritesWidget.clearTable();
+      favoritesWidget.fillTable(result.data);
+      moneyManager.updateUsersList(result.data);
+      console.log(`${id} Успешно удалён из избранного`);
+      favoritesWidget.setMessage(result.success, `${id} Успешно удалён из избранного`);
+    }
+    else {
+      console.error(result.data);
+      favoritesWidget.setMessage(result.success, `Ошибка удаления ${id} из избранного`);
+    }
+  });
+}
