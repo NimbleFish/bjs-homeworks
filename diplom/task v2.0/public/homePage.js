@@ -71,11 +71,11 @@ moneyManager.sendMoneyCallback = ({to, amount, currency})=>{
     console.log(args);
     if(args[0].success == true) {
       ProfileWidget.showProfile(args[0].data);
-      console.log(`Вы перевели ${currency} ${amount} пользователю с id: ${to}`);
-      moneyManager.setMessage(args.success, `Вы перевели ${currency} ${amount} пользователю с id: ${to}`);
+      console.log(`Вы перевели ${amount} ${currency} пользователю с id: ${to}`);
+      moneyManager.setMessage(args.success, `Вы перевели ${amount} ${currency} пользователю с id: ${to}`);
     } else {
-      moneyManager.setMessage(args.success, `Ошибка перевода ${currency} ${amount}`);
-      console.error(`Ошибка перевода ${currency} ${amount}`);
+      moneyManager.setMessage(args.success, `Ошибка перевода ${amount} ${currency}`);
+      console.error(`Ошибка перевода ${amount} ${currency}`);
     }
   });
 }
