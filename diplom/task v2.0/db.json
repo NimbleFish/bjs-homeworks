@@ -43,9 +43,9 @@
       "password": "123",
       "id": "3wo2p6kck6uujtoo",
       "balance": {
-        "RUB": 12,
+        "RUB": 13,
         "USD": 0,
-        "EUR": 0,
+        "EUR": 22,
         "NTC": 1
       }
     }
