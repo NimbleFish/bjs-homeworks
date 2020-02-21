@@ -37,14 +37,15 @@ setInterval(valute, 60000);
 
 //Пополнение счёта
 const moneyManager = new MoneyManager;
-moneyManager.addMoneyCallback = (result)=> {
-    ApiConnector.addMoney({'currency':result.currency, 'amount':result.amount}, (...args)=>{
+moneyManager.addMoneyCallback = ({currency, amount})=> {
+    ApiConnector.addMoney({currency, amount}, (...args)=>{
       if(args[0].success == true) {
         ProfileWidget.showProfile(args[0].data);
-        console.log(`Вы пополнили свой счёт на ${result.amount} ${result.currency}`);
-        moneyManager.setMessage(args.success, `Вы пополнили свой счёт на ${result.amount} ${result.currency}`);
+        console.log(`Вы пополнили свой счёт на ${amount} ${currency}`);
+        moneyManager.setMessage(args.success, `Вы пополнили свой счёт на ${amount} ${currency}`);
       } else {
         moneyManager.setMessage(args.success, 'Ошибка пополнения счёта');
+        console.error('Ошибка пополнения счёта');
       }
     });
 }
@@ -59,6 +60,38 @@ moneyManager.conversionMoneyCallback = ({fromCurrency, targetCurrency, fromAmoun
       moneyManager.setMessage(args.success, `Вы конвертировали ${fromCurrency} ${targetCurrency} в ${fromAmount}`);
     } else {
       moneyManager.setMessage(args.success, 'Ошибка конвертации');
+      console.error('Ошибка конвертации');
     }
   });
 }
+
+//перевод валюты
+moneyManager.sendMoneyCallback = (result)=>{
+  console.log(result);
+  ApiConnector.transferMoney();
+}
+
+//Список избранного
+const favoritesWidget = new FavoritesWidget;
+ApiConnector.getFavorites((result)=>{
+  if(result.success == true) {
+    favoritesWidget.clearTable();
+    favoritesWidget.fillTable(result.data);
+    moneyManager.updateUsersList(result.data);
+  }
+});
+
+//Добавление в избранное
+favoritesWidget.addUserCallback = ({id, name})=>{
+  ApiConnector.addUserToFavorites({id, name}, (...args)=>{
+    if(args[0].success == true) {
+      console.log(`${name} с id ${id} Успешно добавлен в избранное`);
+      favoritesWidget.setMessage(args[0].success, `${name} с id ${id} Успешно добавлен в избранное`);
+    } else {
+      console.error(args[0].data);
+      favoritesWidget.setMessage(args[0].success, `Ошибка добавления ${name} с id ${id} в избранное`);
+    }
+  });
+}
+
+//Удаления из избранного
