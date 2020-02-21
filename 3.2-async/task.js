@@ -11,7 +11,7 @@ class AlarmClock {
     }
 
     if (this.alarmCollection.length == 0) {
-      this.alarmCollection.push({ id, time, callback });
+      this.alarmCollection.push({ time, callback, id });
     }
     else {
       for (let i=0; i < this.alarmCollection.length; i++) {
@@ -24,7 +24,7 @@ class AlarmClock {
         }
       }
       if (allow == true) {
-        this.alarmCollection.push({ id, time, callback });
+        this.alarmCollection.push({ time, callback, id });
       }
     }
   }
