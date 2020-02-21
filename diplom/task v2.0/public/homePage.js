@@ -49,4 +49,16 @@ moneyManager.addMoneyCallback = (result)=> {
     });
 }
 
-//
+//конвертирование валюты
+moneyManager.conversionMoneyCallback = ({fromCurrency, targetCurrency, fromAmount})=> {
+  ApiConnector.convertMoney({fromAmount, fromCurrency, targetCurrency}, (...args)=>{
+    console.log(args);
+    if(args[0].success == true) {
+      ProfileWidget.showProfile(args[0].data);
+      console.log(`Вы конвертировали ${fromCurrency} ${targetCurrency} в ${fromAmount}`);
+      moneyManager.setMessage(args.success, `Вы конвертировали ${fromCurrency} ${targetCurrency} в ${fromAmount}`);
+    } else {
+      moneyManager.setMessage(args.success, 'Ошибка конвертации');
+    }
+  });
+}
