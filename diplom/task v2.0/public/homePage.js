@@ -34,3 +34,19 @@ function valute() {
 //Обновление курса валют
 valute();
 setInterval(valute, 60000);
+
+//Пополнение счёта
+const moneyManager = new MoneyManager;
+moneyManager.addMoneyCallback = (result)=> {
+    ApiConnector.addMoney({'currency':result.currency, 'amount':result.amount}, (...args)=>{
+      console.log(args);
+      if(args[0].success == true) {
+        ProfileWidget.showProfile(args[0].data);
+        console.log(`Вы пополнили свой счёт на ${result.amount} ${result.currency}`)
+      } else {
+        moneyManager.setMessage(args.success, 'Ошибка пополнения счёта');
+      }
+    });
+}
+
+//
