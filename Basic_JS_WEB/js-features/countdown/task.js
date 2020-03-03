@@ -35,6 +35,7 @@ function timer() {
   if (hour.textContent == '0' && min.textContent == '0' && sec.textContent <= '0') {
     clearInterval(timerID);
     window.alert('Вы победили в конкурсе!');
+    window.location.replcae('');
   }
 }
 
