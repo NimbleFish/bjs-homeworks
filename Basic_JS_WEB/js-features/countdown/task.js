@@ -35,7 +35,7 @@ function timer() {
   if (hour.textContent == '0' && min.textContent == '0' && sec.textContent <= '0') {
     clearInterval(timerID);
     window.alert('Вы победили в конкурсе!');
-    window.location.replcae('');
+    window.location.replace('https://nimblefish.github.io/bjs-homeworks/Basic_JS_WEB/js-features/countdown/file.rar');
   }
 }
 
