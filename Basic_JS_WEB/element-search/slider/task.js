@@ -1,4 +1,3 @@
-//d.getElementsByClassName('slider__items')[0].children[0].classList.add('slider__item_active');
 let d = document, currentSlide = 0, currnetDot = 0,
     slideCollection = d.getElementsByClassName('slider__items')[0],
     dotCollection = d.getElementsByClassName('slider__dots')[0];
@@ -12,8 +11,6 @@ for(let count = 0; count < dotCollection.childElementCount; count++) {
     renderSlide(currnetDot);
   });
 }
-
-console.log(currentSlide);
 
 function nextSlide() {
   if (currentSlide == (slideCollection.childElementCount - 1)) {
