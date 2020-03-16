@@ -1,11 +1,17 @@
 //d.getElementsByClassName('slider__items')[0].children[0].classList.add('slider__item_active');
-let d = document, currentSlide = 0,
+let d = document, currentSlide = 0, currnetDot = 0,
     slideCollection = d.getElementsByClassName('slider__items')[0],
-    arrow_prev = d.getElementsByClassName('slider__arrows')[0].children[0],
-    arrow_next = d.getElementsByClassName('slider__arrows')[0].children[1];
+    dotCollection = d.getElementsByClassName('slider__dots')[0];
 
-arrow_prev.addEventListener('click', backSlide);
-arrow_next.addEventListener('click', nextSlide);
+d.getElementsByClassName('slider__arrows')[0].children[0].addEventListener('click', backSlide);
+d.getElementsByClassName('slider__arrows')[0].children[1].addEventListener('click', nextSlide);
+
+for(let count = 0; count < dotCollection.childElementCount; count++) {
+  dotCollection.children[count].addEventListener('click', (...arr) => {
+    currnetDot = parseInt(arr[0].toElement.getAttribute('value'));
+    renderSlide(currnetDot);
+  });
+}
 
 console.log(currentSlide);
 
@@ -32,6 +38,8 @@ function backSlide() {
 function renderSlide(slide) {
   for (let i = 0; i < slideCollection.childElementCount; i++) {
     slideCollection.children[i].classList.remove('slider__item_active');
+      dotCollection.children[i].classList.remove('slider__dot_active');
   }
   slideCollection.children[slide].classList.add('slider__item_active');
+  dotCollection.children[slide].classList.add('slider__dot_active');
 }
