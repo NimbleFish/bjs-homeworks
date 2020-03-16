@@ -1,25 +1,17 @@
-let mainMenu = document.querySelectorAll('.menu_main>li>.menu__link');
+let d = document,
+    mainMenu = d.querySelectorAll('.menu_main>li>.menu__link');
 
-mainMenu[0].onmouseover = () => {
-  document.querySelectorAll('.menu_main .menu__item ul')[0].classList.remove('menu_active');
-  document.querySelectorAll('.menu_main .menu__item ul')[1].classList.remove('menu_active');
-}
-mainMenu[3].onmouseover = () => {
-  document.querySelectorAll('.menu_main .menu__item ul')[0].classList.remove('menu_active');
-  document.querySelectorAll('.menu_main .menu__item ul')[1].classList.remove('menu_active');
-}
-mainMenu[1].onmouseover = () => {
-  document.querySelectorAll('.menu_main .menu__item ul')[0].classList.add('menu_active');
-  document.querySelectorAll('.menu_main .menu__item ul')[1].classList.remove('menu_active');
-}
-document.querySelectorAll('.menu_main>li>ul li').onmouseout = () => {
-  document.querySelectorAll('.menu_main .menu__item ul')[0].classList.remove('menu_active');
-}
-
-mainMenu[2].onmouseover = () => {
-  document.querySelectorAll('.menu_main .menu__item ul')[1].classList.add('menu_active');
-  document.querySelectorAll('.menu_main .menu__item ul')[0].classList.remove('menu_active');
-}
-document.querySelectorAll('.menu_main>li>ul li').onmouseout = () => {
-  document.querySelectorAll('.menu_main .menu__item ul')[1].classList.remove('menu_active');
+for(let i = 0; i < d.getElementsByClassName('menu_main')[0].childElementCount; i++) {
+  if(d.getElementsByClassName('menu_main')[0].children[i].childElementCount > 1) {
+    d.getElementsByClassName('menu_main')[0].children[i].addEventListener('click', (el)=>{
+      el.preventDefault();
+      d.getElementsByClassName('menu_main')[0].children[i].children[1].classList.toggle('menu_active');
+      if(d.getElementsByClassName('menu_main')[0].children[1].children[1].className.includes('menu_active')) {
+        d.getElementsByClassName('menu_main')[0].children[2].children[1].classList.remove('menu_active');
+      }
+      if(d.getElementsByClassName('menu_main')[0].children[2].children[1].className.includes('menu_active')) {
+        d.getElementsByClassName('menu_main')[0].children[1].children[1].classList.remove('menu_active');
+      }
+    });
+  }
 }
