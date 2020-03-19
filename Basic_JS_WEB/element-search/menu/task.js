@@ -1,16 +1,13 @@
-let d = document,
-    mainMenu = d.querySelectorAll('.menu_main>li>.menu__link');
+let menu = document.getElementsByClassName('menu_main')[0];
 
-for(let i = 0; i < d.getElementsByClassName('menu_main')[0].childElementCount; i++) {
-  if(d.getElementsByClassName('menu_main')[0].children[i].childElementCount > 1) {
-    d.getElementsByClassName('menu_main')[0].children[i].addEventListener('click', (el)=>{
+for(let i = 0; i < menu.childElementCount; i++) {
+  if(menu.children[i].childElementCount > 1) {
+    menu.children[i].addEventListener('click', (el)=>{
       el.preventDefault();
-      d.getElementsByClassName('menu_main')[0].children[i].children[1].classList.toggle('menu_active');
-      if(d.getElementsByClassName('menu_main')[0].children[1].children[1].className.includes('menu_active')) {
-        d.getElementsByClassName('menu_main')[0].children[2].children[1].classList.remove('menu_active');
-      }
-      if(d.getElementsByClassName('menu_main')[0].children[2].children[1].className.includes('menu_active')) {
-        d.getElementsByClassName('menu_main')[0].children[1].children[1].classList.remove('menu_active');
+      if(!menu.children[i].children[1].className.includes('menu_active')) {
+        menu.children[i].children[1].classList.add('menu_active');
+      } else {
+        menu.children[i].children[1].classList.remove('menu_active');
       }
     });
   }
