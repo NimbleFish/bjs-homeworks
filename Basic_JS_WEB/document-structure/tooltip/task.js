@@ -1,21 +1,14 @@
-document.querySelector('.tasks__control').addEventListener('submit', (e) => {
-	e.preventDefault();
-});
-
-document.getElementById('tasks__add').addEventListener('click', () => {
-  if(document.getElementById('task__input').value !== '') {
-    document.getElementById('tasks__list').innerHTML += `
-      <div class="task">
-        <div class="task__title">
-          ${document.getElementById('task__input').value}
+for (var i = 0; i < document.getElementsByTagName('a').length; i++) {
+  document.getElementsByTagName('a')[i].addEventListener('click', (e) => {
+    e.preventDefault();
+    for (let f = 0; f < document.getElementsByTagName('a').length; f++) {
+      if (document.getElementsByTagName('a')[f] == e.toElement) {
+        document.getElementsByTagName('a')[f].insertAdjacentHTML('afterEnd', `
+        <div class="tooltip" style="left: ${e.toElement.offsetLeft}px; top: ${e.toElement.offsetTop + 20}px; display: block;">
+          ${e.toElement.getAttribute('title')}
         </div>
-        <a href="#" class="task__remove">&times;</a>
-      </div>
-    `;
-  }
-});
-
-// Удаление не работает, пробовал циклы, обработчик добавления и много if, ничего не получается
-// document.querySelectorAll('.task__remove')[document.querySelectorAll('.tasks__list .task__remove').length-1].addEventListener('click', (e) => {
-//   document.querySelectorAll('.tasks__list')[0].lastElementChild.remove();
-// });
+        `);
+      }
+    }
+  });
+}

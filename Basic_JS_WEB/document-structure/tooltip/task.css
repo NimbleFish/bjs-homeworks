@@ -1,42 +1,21 @@
-body {
-  font-family: Arial;
+.has-tooltip {
+  color: #000;
+  background: yellow;
 }
 
-.tasks__control {
-  display: flex;
-}
-.tasks__input {
-  flex-grow: 1;
-  padding: 10px;
-  border-radius: 25px;
-  border: 1px solid gray;
-}
-
-.tasks__add {
-  background: green;
-  color: #fff;
-  border: none;
-  border-radius: 25px;
-  padding:  10px;
-  text-transform: uppercase;
-}
-
-.task {
-  display: flex;
-}
-
-.tasks__list {
-  margin-top: 10px;
-}
-
-.task__title {
-  flex-grow: 1;
-  padding: 10px 5px;
-}
-
-.task__remove {
+.has-tooltip:hover {
   color: red;
-  font-size: 30px;
-  text-decoration: none;
-  cursor: pointer;
+}
+
+.tooltip {
+  position: fixed;
+  display: none;
+  background: black;
+  padding: 5px;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.tooltip_active {
+  display: block;
 }
