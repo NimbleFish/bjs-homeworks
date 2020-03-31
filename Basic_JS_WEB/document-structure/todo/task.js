@@ -12,9 +12,9 @@ document.getElementById('tasks__add').addEventListener('click', () => {
         <a href="#" class="task__remove">&times;</a>
       </div>
     `);
-		document.querySelectorAll('.task__remove')[document.querySelectorAll('.tasks__list .task__remove').length-1].addEventListener('click', (e) => {
-		  document.querySelectorAll('.tasks__list')[0].lastElementChild.remove();
-		});
+		for (let i = 0; i < document.querySelectorAll('.task__remove').length; i++) {
+			document.querySelectorAll('.task__remove')[i].addEventListener('click', (e) => {e.path[1].remove()});
+		}
 		document.getElementById('task__input').value = '';
   }
 });
