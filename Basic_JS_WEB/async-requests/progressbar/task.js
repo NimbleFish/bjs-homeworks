@@ -4,11 +4,9 @@ let xhr = new XMLHttpRequest();
 
 document.getElementById('send').addEventListener('click', (e) => {
   e.preventDefault();
-
-  xhr.upload.onprogress = function(event) {
-    console.log(event.loaded);
-  }
-
   xhr.open('POST', document.getElementById('form').action, true);
   xhr.send(document.getElementsByName('file'));
+  xhr.onprogress = function(event) {
+    progress.value = event.loaded / 1000000;
+  }
 });
