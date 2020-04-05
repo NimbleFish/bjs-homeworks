@@ -54,7 +54,7 @@ class User {
    * User.setCurrent.
    * */
   static register( data, callback = f => f ) {
-
+    
   }
 
   /**
