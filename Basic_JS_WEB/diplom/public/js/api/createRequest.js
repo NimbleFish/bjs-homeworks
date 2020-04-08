@@ -21,7 +21,7 @@ const createRequest = (options = {}) => {
       }
       xhr.addEventListener('readystatechange', () => {
         if(xhr.readyState === xhr.DONE) {
-          return xhr.responseText;
+          return xhr.response;
         }
       });
     }
@@ -38,7 +38,7 @@ const createRequest = (options = {}) => {
       }
       xhr.addEventListener('readystatechange', () => {
         if(xhr.readyState === xhr.DONE) {
-          return xhr.responseText;
+          return xhr.response;
         }
       });
     }
@@ -49,7 +49,7 @@ createRequest({
   'responseType' : 'json',
   'method' : 'POST',
   'data' : {
-    'mail': 'test@test.ru',
+    'email': 'test@test.ru',
     'password': 'test11111111'
   }
 });
