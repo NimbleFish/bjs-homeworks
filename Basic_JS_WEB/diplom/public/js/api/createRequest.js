@@ -4,10 +4,10 @@
  * */
 const createRequest = (options = {}) => {
     const xhr = new XMLHttpRequest;
-    xhr.responseType = options.responseType;
     xhr.withCredentials = true;
 
     if(options.method === "GET") {
+      xhr.responseType = '';
       options.url += "?";
       for (let data in options.data) {
         options.url += `${data}=${options.data[data]}&`;
@@ -15,7 +15,7 @@ const createRequest = (options = {}) => {
       options.url = options.url.substring(0, options.url.length-1);
       xhr.open(options.method, options.url);
       try {
-        xhr.send(options.data);
+        xhr.send();
       } catch(error) {
         console.error(error);
       }
@@ -26,6 +26,7 @@ const createRequest = (options = {}) => {
       });
     }
     else {
+      xhr.responseType = options.responseType;
       const formData = new FormData();
       for (let data in options.data) {
         formData.append( `${data}`, `${options.data[data]}` );
@@ -38,7 +39,11 @@ const createRequest = (options = {}) => {
       }
       xhr.addEventListener('readystatechange', () => {
         if(xhr.readyState === xhr.DONE) {
-          return xhr.response;
+          if (xhr.response.success == true) {
+            return xhr.response;
+          } else {
+            console.error(xhr.response.error);
+          }
         }
       });
     }
