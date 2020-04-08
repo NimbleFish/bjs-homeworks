@@ -49,12 +49,12 @@ const createRequest = (options = {}) => {
     }
 };
 
-createRequest({
-  'url' : 'http://localhost:8000/user/login',
-  'responseType' : 'json',
-  'method' : 'POST',
-  'data' : {
-    'email': 'test@test.ru',
-    'password': 'test11111111'
-  }
-});
+// createRequest({
+//   'url' : 'http://localhost:8000/user/login',
+//   'responseType' : 'json',
+//   'method' : 'POST',
+//   'data' : {
+//     'email': 'test@test.ru',
+//     'password': 'test11111111'
+//   }
+// });
