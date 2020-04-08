@@ -54,7 +54,18 @@ class User {
    * User.setCurrent.
    * */
   static register( data, callback = f => f ) {
-    
+    let result = createRequest({
+      'url' : 'http://localhost:8000/user/register',
+      'method' : 'POST',
+      'responseType' : 'json',
+      'data' : {
+        'name' : data.name,
+        'email' : data.email,
+        'password' : data.password
+      }
+    });
+    console.log(result);
+    // this.setCurrent =
   }
 
   /**

@@ -40,7 +40,7 @@ const createRequest = (options = {}) => {
       xhr.addEventListener('readystatechange', () => {
         if(xhr.readyState === xhr.DONE) {
           if (xhr.response.success == true) {
-            return xhr.response;
+            return xhr.response.user;
           } else {
             console.error(xhr.response.error);
           }

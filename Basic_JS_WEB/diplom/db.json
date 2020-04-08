@@ -6,6 +6,20 @@
       "password": "demo",
       "id": "1",
       "isAuthorized": false
+    },
+    {
+      "name": "Vlad",
+      "email": "test@test.ru",
+      "password": "abracadabra",
+      "id": "5phvd7j4k8rghvho",
+      "isAuthorized": true
+    },
+    {
+      "name": "Vlad1",
+      "email": "test1@test.ru",
+      "password": "abracadabra1",
+      "id": "5phvd2t4k8rglucc",
+      "isAuthorized": true
     }
   ],
   "accounts": [
