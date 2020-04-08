@@ -21,7 +21,11 @@ const createRequest = (options = {}) => {
       }
       xhr.addEventListener('readystatechange', () => {
         if(xhr.readyState === xhr.DONE) {
-          return xhr.response;
+          options.callback = (err, response) => {
+            if(err == null) {
+              return xhr.response;
+            }
+          }
         }
       });
     }
@@ -38,11 +42,9 @@ const createRequest = (options = {}) => {
         console.error(error);
       }
       xhr.addEventListener('readystatechange', () => {
-        if(xhr.readyState === xhr.DONE) {
-          if (xhr.response.success == true) {
-            return xhr.response.user;
-          } else {
-            console.error(xhr.response.error);
+        options.callback = (err, response) => {
+          if(err == null) {
+            return xhr.response;
           }
         }
       });
