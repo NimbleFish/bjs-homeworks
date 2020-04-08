@@ -2,11 +2,11 @@
  * Основная функция для совершения запросов
  * на сервер.
  * */
-const createRequest = ({url, headers, data, responseType, method}) => {
+const createRequest = ({url, data, responseType, method}) => {
     const xhr = new XMLHttpRequest;
     try {
       xhr.open(method, url, true);
-      xhr.setRequestHeader(headers, responseType);
+      xhr.setRequestHeader('Content-Type', responseType);
       xhr.send(data);
       xhr.addEventListener('readystatechange', () => {
         if (xhr.readyState === xhr.DONE) {
@@ -18,5 +18,12 @@ const createRequest = ({url, headers, data, responseType, method}) => {
     }
 };
 
-// Запрос
-createRequest({ 'url' : 'http://localhost:8000/user/login?email=123&password=123', 'headers' : 'Content-Type', 'responseType' : 'application/json', 'method' : 'GET', });
+createRequest({
+  'url' : 'http://localhost:8000/user/login',
+  'responseType' : 'json',
+  'method' : 'GET',
+  'data' : {
+    'mail': 'test@test.ru',
+    'password': 'test11111111'
+  }
+});
