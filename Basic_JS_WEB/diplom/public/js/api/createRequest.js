@@ -27,6 +27,9 @@ const createRequest = (options = {}) => {
     }
     else {
       const formData = new FormData();
+      for (let data in options.data) {
+        formData.append( `${data}`, `${options.data[data]}` );
+      }
       xhr.open(options.method, options.url);
       try {
         xhr.send(formData);
@@ -44,7 +47,7 @@ const createRequest = (options = {}) => {
 createRequest({
   'url' : 'http://localhost:8000/user/login',
   'responseType' : 'json',
-  'method' : 'GET',
+  'method' : 'POST',
   'data' : {
     'mail': 'test@test.ru',
     'password': 'test11111111'
