@@ -39,10 +39,11 @@ const createRequest = (options = {}) => {
     }
     xhr.addEventListener('readystatechange', () => {
       if(xhr.readyState === xhr.DONE) {
-          console.log(xhr.response);
+          console.log(`${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}:${new Date().getMilliseconds()} xhr.response`);
       }
     });
-    return "Завершение работы функции";
+    return `${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}:${new Date().getMilliseconds()}
+    Завершение работы функции`;
   }
 };
 // createRequest({
