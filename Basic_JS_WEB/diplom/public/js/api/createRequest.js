@@ -22,7 +22,6 @@ const createRequest = (options = {}) => {
     xhr.addEventListener('readystatechange', () => {
       if(xhr.readyState === xhr.DONE) {
 
-        }
       }
     });
   }
@@ -35,18 +34,17 @@ const createRequest = (options = {}) => {
     xhr.open(options.method, options.url);
     try {
       xhr.send(formData);
-      return callback(xhr);
     } catch(error) {
       console.error(error);
     }
+    xhr.addEventListener('readystatechange', () => {
+      if(xhr.readyState === xhr.DONE) {
+          console.log(xhr.response);
+      }
+    });
+    return "Завершение работы функции";
   }
 };
-
-function callback(xhr) {
-  if(xhr.readyState === xhr.DONE) {
-    return xhr.response;
-  }
-}
 // createRequest({
 //   'url' : 'http://localhost:8000/user/login',
 //   'responseType' : 'json',
