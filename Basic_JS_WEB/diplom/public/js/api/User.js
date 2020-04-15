@@ -10,7 +10,7 @@ class User {
    * локальном хранилище.
    * */
   static setCurrent(user) {
-
+    window.localStorage.user = JSON.stringify(user);
   }
 
   /**
@@ -18,7 +18,7 @@ class User {
    * пользователе из локального хранилища.
    * */
   static unsetCurrent() {
-
+    delete window.localStorage.user;
   }
 
   /**
@@ -26,7 +26,11 @@ class User {
    * из локального хранилища
    * */
   static current() {
-
+    if (window.localStorage.user !== undefined) {
+      return JSON.parse(window.localStorage.user);
+    } else {
+      return undefined;
+    }
   }
 
   /**
@@ -54,7 +58,7 @@ class User {
    * User.setCurrent.
    * */
   static register( data, callback = f => f ) {
-    let result = createRequest({
+    createRequest({
       'url' : 'http://localhost:8000/user/register',
       'method' : 'POST',
       'responseType' : 'json',
@@ -62,9 +66,20 @@ class User {
         'name' : data.name,
         'email' : data.email,
         'password' : data.password
-      }
+      },
+      'callback' : callback;
     });
-    console.log(result);
+
+    // result.addEventListener('readystatechange', () => {
+    //   if (result.readyState === result.DONE) {
+    //     if (result.response.success == true) {
+    //       this.setCurrent(result.response.user);
+    //     } else {
+    //       console.error(result.response.error);
+    //     }
+    //   }
+    // });
+
     // this.setCurrent =
   }
 
