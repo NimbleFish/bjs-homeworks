@@ -12,28 +12,28 @@
       "email": "test@test.ru",
       "password": "abracadabra",
       "id": "5phvd7j4k8rghvho",
-      "isAuthorized": true
+      "isAuthorized": false
     },
     {
       "name": "Vlad1",
       "email": "test1@test.ru",
       "password": "abracadabra1",
       "id": "5phvd2t4k8rglucc",
-      "isAuthorized": true
+      "isAuthorized": false
     },
     {
       "name": "Alex",
       "email": "123@mial.ru",
       "password": "123",
       "id": "5phvd7ykk8x28wbg",
-      "isAuthorized": true
+      "isAuthorized": false
     },
     {
       "name": "Alex",
       "email": "123@mail.ru",
       "password": "123",
       "id": "5phvd4zwk8x4rwj7",
-      "isAuthorized": true
+      "isAuthorized": false
     },
     {
       "name": "Alex1",
@@ -58,6 +58,48 @@
       "email": "12345@mail.ru",
       "password": "12345",
       "id": "5phvd3mok91aageh",
+      "isAuthorized": true
+    },
+    {
+      "name": "Alex4",
+      "email": "1234@mail.ru",
+      "password": "1234",
+      "id": "5phvd9e8k98alvut",
+      "isAuthorized": true
+    },
+    {
+      "name": "Alex6",
+      "email": "123456@mail.ru",
+      "password": "123456",
+      "id": "5phvd8f4k98aoeda",
+      "isAuthorized": true
+    },
+    {
+      "name": "Alex7",
+      "email": "1234567@mail.ru",
+      "password": "1234567",
+      "id": "5phvd52sk98ap9i1",
+      "isAuthorized": true
+    },
+    {
+      "name": "Alex8",
+      "email": "12345678@mail.ru",
+      "password": "12345678",
+      "id": "5phvd4ewk98aq1rb",
+      "isAuthorized": true
+    },
+    {
+      "name": "Alex9",
+      "email": "123456789@mail.ru",
+      "password": "123456789",
+      "id": "5phvd2lwk98bbvi3",
+      "isAuthorized": true
+    },
+    {
+      "name": "Alex91",
+      "email": "1234567891@mail.ru",
+      "password": "1234567891",
+      "id": "5phvd1bok98bdg8g",
       "isAuthorized": true
     }
   ],
