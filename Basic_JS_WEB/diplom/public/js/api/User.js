@@ -1,15 +1,15 @@
 class User { // Класс User управляет авторизацией, выходом и регистрацией пользователя из приложения.
   static setCurrent(user) { // Устанавливает текущего пользователя в локальном хранилище.
-    window.localStorage.user = JSON.stringify(user);
+    localStorage.user = JSON.stringify(user);
   }
 
   static unsetCurrent() { // даляет информацию об авторизованном пользователе из локального хранилища.
-    delete window.localStorage.user;
+    delete localStorage.user;
   }
 
   static current() { // Возвращает текущего авторизованного пользователя из локального хранилища.
-    if (window.localStorage.user !== undefined) {
-      return JSON.parse(window.localStorage.user);
+    if (localStorage.user !== undefined) {
+      return JSON.parse(localStorage.user);
     } else {
       return undefined;
     }
@@ -17,7 +17,7 @@ class User { // Класс User управляет авторизацией, в�
 
   static fetch( data, callback = f => f ) { // Получает информацию о текущем авторизованном пользователе.
     if (data === undefined) { data = { 'id' : undefined, 'name' : undefined, 'email' : undefined } };
-    createRequest({
+    return createRequest({
       'url' : 'http://localhost:8000/user/current',
       'method' : 'GET',
       'responseType' : 'json',
@@ -27,7 +27,7 @@ class User { // Класс User управляет авторизацией, в�
   }
 
   static login( data, callback = f => f ) { // Производит попытку авторизации.
-    createRequest({
+    return createRequest({
       'url' : 'http://localhost:8000/user/login',
       'method' : 'POST',
       'responseType' : 'json',
@@ -37,7 +37,7 @@ class User { // Класс User управляет авторизацией, в�
   }
 
   static register( data, callback = f => f ) { // Производит попытку регистрации пользователя.
-    createRequest({
+    return createRequest({
       'url' : 'http://localhost:8000/user/register',
       'method' : 'POST',
       'responseType' : 'json',
@@ -47,7 +47,7 @@ class User { // Класс User управляет авторизацией, в�
   }
 
   static logout( data, callback = f => f ) { // Производит выход из приложения.
-    createRequest({
+    return createRequest({
       'url' : 'http://localhost:8000/user/logout',
       'method' : 'POST',
       'responseType' : 'json',
