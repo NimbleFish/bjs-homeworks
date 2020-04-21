@@ -11,12 +11,14 @@ class Modal { // Класс Modal отвечает за управление в�
   registerEvents() { // При нажатии на элемент должен закрыть текущее окно.
     if (this.element.dataset.dismiss = "modal") {
       this.element.addEventListener('click', (e) => {
+        e.preventDefault();
         this.onClose(e);
       });
     }
   }
 
-  onClose( e ) { // Закрывает текущее окно.
+  onClose(e) { // Закрывает текущее окно.
+    e.preventDefault();
     this.close();
   }
 
