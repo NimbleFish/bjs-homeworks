@@ -6,14 +6,13 @@
  * для последующей обработки
  * */
 class AsyncForm {
-  /**
-   * Если переданный элемент не существует,
-   * необходимо выкинуть ошибку.
-   * Сохраняет переданный элемент и регистрирует события
-   * через registerEvents()
-   * */
-  constructor( element ) {
-
+  constructor( element ) { // Сохраняет переданный элемент и регистрирует события.
+    if (!element) {
+      console.error("Передана пустая или несуществующая форма!");
+    } else {
+      this.element = element;
+      this.registerEvents();
+    }
   }
 
   /**
@@ -21,7 +20,10 @@ class AsyncForm {
    * вызывает метод submit()
    * */
   registerEvents() {
-
+    this.element.addEventListener('sumbit', (e) => {
+      e.preventDefault();
+      this.submit();
+    })
   }
 
   /**
@@ -32,10 +34,14 @@ class AsyncForm {
    * }
    * */
   getData() {
-
+    let el = document.querySelectorAll(`#${this.element.id} input.form-control`), data = {};
+    for (let i = 0; i < el.length; i++) {
+      data[el[i].name] = el[i].value;
+    }
+    return data;
   }
 
-  onSubmit( options ) {
+  onSubmit( options ) { // Для наследования
 
   }
 
@@ -44,6 +50,7 @@ class AsyncForm {
    * данные, полученные из метода getData()
    * */
   submit() {
-
+    console.log({ 'url': this.element.action, 'method': this.element.method,'data' : this.getData()});
+    this.onSubmit({ 'url': this.element.action, 'method': this.element.method,'data' : this.getData()});
   }
 }
