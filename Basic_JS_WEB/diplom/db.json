@@ -40,39 +40,39 @@
       "email": "12@mail.ru",
       "password": "12",
       "id": "5phvd5tck8x5nacw",
-      "isAuthorized": true
+      "isAuthorized": false
     },
     {
       "name": "Alex11",
       "email": "1@mail.ru",
       "password": "1",
       "id": "5phvd6aok8x5p72k",
-      "isAuthorized": true
+      "isAuthorized": false
     },
     {
       "id": "5phvd74sk91a5q4w",
-      "isAuthorized": true
+      "isAuthorized": false
     },
     {
       "name": "Yura",
       "email": "12345@mail.ru",
       "password": "12345",
       "id": "5phvd3mok91aageh",
-      "isAuthorized": true
+      "isAuthorized": false
     },
     {
       "name": "Alex4",
       "email": "1234@mail.ru",
       "password": "1234",
       "id": "5phvd9e8k98alvut",
-      "isAuthorized": true
+      "isAuthorized": false
     },
     {
       "name": "Alex6",
       "email": "123456@mail.ru",
       "password": "123456",
       "id": "5phvd8f4k98aoeda",
-      "isAuthorized": true
+      "isAuthorized": false
     },
     {
       "name": "Alex7",
