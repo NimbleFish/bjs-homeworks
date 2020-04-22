@@ -79,27 +79,69 @@
       "email": "1234567@mail.ru",
       "password": "1234567",
       "id": "5phvd52sk98ap9i1",
-      "isAuthorized": true
+      "isAuthorized": false
     },
     {
       "name": "Alex8",
       "email": "12345678@mail.ru",
       "password": "12345678",
       "id": "5phvd4ewk98aq1rb",
-      "isAuthorized": true
+      "isAuthorized": false
     },
     {
       "name": "Alex9",
       "email": "123456789@mail.ru",
       "password": "123456789",
       "id": "5phvd2lwk98bbvi3",
-      "isAuthorized": true
+      "isAuthorized": false
     },
     {
       "name": "Alex91",
       "email": "1234567891@mail.ru",
       "password": "1234567891",
       "id": "5phvd1bok98bdg8g",
+      "isAuthorized": false
+    },
+    {
+      "name": "undefined",
+      "email": "undefined",
+      "password": "undefined",
+      "id": "5phvd5o0k9bauhvd",
+      "isAuthorized": false
+    },
+    {
+      "name": "Fish1",
+      "email": "Fish1@mail.ru",
+      "password": "Fish11",
+      "id": "5phvd16ok9bay88j",
+      "isAuthorized": true
+    },
+    {
+      "name": "Fish",
+      "email": "Fish@mail.ru",
+      "password": "Fish",
+      "id": "5phvd5ukk9bazor3",
+      "isAuthorized": true
+    },
+    {
+      "name": "Fish2",
+      "email": "Fish2@mail.ru",
+      "password": "Fish2",
+      "id": "5phvd2ggk9bb263o",
+      "isAuthorized": true
+    },
+    {
+      "name": "Fish23",
+      "email": "Fish23@mail.ru",
+      "password": "Fish23",
+      "id": "5phvd324k9bb3ddg",
+      "isAuthorized": true
+    },
+    {
+      "name": "Fish24",
+      "email": "Fish24@mail.ru",
+      "password": "Fish24",
+      "id": "5phvd998k9bb58n8",
       "isAuthorized": true
     }
   ],
