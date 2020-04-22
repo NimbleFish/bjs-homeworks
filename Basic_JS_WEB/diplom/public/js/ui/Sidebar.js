@@ -14,15 +14,26 @@ class Sidebar { // отвечает за боковую колонку: кноп
     }
   }
 
-  /**
-   * При нажатии на кнопку входа, показывает окно входа
-   * (через найденное в App.getModal)
-   * При нажатии на кнопку регастрации показывает окно регистрации
-   * При нажатии на кнопку выхода вызывает User.logout и по успешному
-   * выходу устанавливает App.setState( 'init' )
-   * */
-  static initAuthLinks() {
-
+  static initAuthLinks() { // кнопки боковой панели
+    let login = document.querySelector('li.menu-item.menu-item_login'),
+        register = document.querySelector('li.menu-item.menu-item_register'),
+        logout = document.querySelector('li.menu-item.menu-item_logout');
+    register.addEventListener('click', () => {
+      new Modal(App.getModal('register').element).open();
+    });
+    login.addEventListener('click', () => {
+      new Modal(App.getModal('login').element).open();
+    });
+    logout.addEventListener('click', () => {
+      User.logout(User.current(), (err, res) => {
+        if(res.success === true) {
+          User.unsetCurrent();
+          window.location.reload();
+        } else {
+          console.error(err);
+        }
+      });
+    });
   }
 
 }
