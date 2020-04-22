@@ -20,10 +20,10 @@ class AsyncForm {
    * вызывает метод submit()
    * */
   registerEvents() {
-    this.element.addEventListener('sumbit', (e) => {
+    this.element.addEventListener('submit', (e) => {
       e.preventDefault();
       this.submit();
-    })
+    });
   }
 
   /**
@@ -50,7 +50,6 @@ class AsyncForm {
    * данные, полученные из метода getData()
    * */
   submit() {
-    console.log({ 'url': this.element.action, 'method': this.element.method,'data' : this.getData()});
     this.onSubmit({ 'url': this.element.action, 'method': this.element.method,'data' : this.getData()});
   }
 }
