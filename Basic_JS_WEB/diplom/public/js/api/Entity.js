@@ -1,12 +1,14 @@
 class Entity { // Базовый калсс для взаимодействия с сервером.
   static list( data, callback = f => f ) { // Запрашивает с сервера список данных.
+    this.HOST = "http://localhost:8000/";
+    this.URL = "account/";
     console.log(this.HOST);
     console.log(this.URL);
     return createRequest({
-      'url' : 'http://localhost:8000/account/',
+      'url' : `${this.HOST}${this.URL}`,
       'method' : 'GET',
       'responseType' : 'json',
-      'data' : { 'mail' : data.mail, 'password' : data.password },
+      'data' : { 'id' : data.id, 'mail' : data.mail, 'password' : data.password },
       'callback' : callback
     });
   }
@@ -44,10 +46,11 @@ class Entity { // Базовый калсс для взаимодействия 
 // Вызов
 /*
 Entity.create({
+  'id' : 1,
   'mail' : 'demo@mail.ru',
   'password' : 'demo'
 }, (err, res) => {
-  console.log(res);
+  console.log(JSON.parse(res));
 });
 
 Entity.get('1', {
@@ -65,6 +68,7 @@ Entity.list({
 });
 
 Entity.remove('1', {
+  'id' : id,
   'mail' : 'demo@mail.ru',
   'password' : 'demo'
 }, (err, res) => {
