@@ -1,11 +1,11 @@
 class Entity { // Базовый калсс для взаимодействия с сервером.
+  constructor() {
+       this.HOST = "http://localhost:8000/";
+       this.URL = "account/";
+   }
   static list( data, callback = f => f ) { // Запрашивает с сервера список данных.
-    this.HOST = "http://localhost:8000/";
-    this.URL = "account/";
-    console.log(this.HOST);
-    console.log(this.URL);
     return createRequest({
-      'url' : `${this.HOST}${this.URL}`,
+      'url' : `${this.HOST}${this.URL}/list`,
       'method' : 'GET',
       'responseType' : 'json',
       'data' : { 'id' : data.id, 'mail' : data.mail, 'password' : data.password },
@@ -15,7 +15,7 @@ class Entity { // Базовый калсс для взаимодействия 
 
   static create( data, callback = f => f ) { // Создаёт счёт или доход/расход с помощью запроса на сервер.
     return createRequest({
-      'url' : 'http://localhost:8000/account/',
+      'url' : `${this.HOST}${this.URL}`,
       'method' : 'POST',
       'responseType' : 'json',
       'data' : { 'mail' : data.mail, 'password' : data.password, '_method' : 'PUT' },
@@ -25,7 +25,7 @@ class Entity { // Базовый калсс для взаимодействия 
 
   static get( id = '', data, callback = f => f ) { // Получает информацию о счёте или доходе/расходе
     return createRequest({
-      'url' : 'http://localhost:8000/account/get',
+      'url' : `${this.HOST}${this.URL}/get`,
       'method' : 'GET',
       'responseType' : 'json',
       'data' : { 'id' : id, 'mail' : data.mail, 'password' : data.password },
@@ -35,7 +35,7 @@ class Entity { // Базовый калсс для взаимодействия 
 
   static remove( id = '', data, callback = f => f ) { // Удаляет информацию о счёте или доходе/расходе
     return createRequest({
-      'url' : 'http://localhost:8000/account/',
+      'url' : `${this.HOST}${this.URL}`,
       'method' : 'POST',
       'responseType' : 'json',
       'data' : { 'id' : id, 'mail' : data.mail, 'password' : data.password, '_method' : 'DELETE' },
