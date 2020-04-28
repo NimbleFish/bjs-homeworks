@@ -114,7 +114,7 @@
       "email": "Fish1@mail.ru",
       "password": "Fish11",
       "id": "5phvd16ok9bay88j",
-      "isAuthorized": true
+      "isAuthorized": false
     },
     {
       "name": "Fish",
