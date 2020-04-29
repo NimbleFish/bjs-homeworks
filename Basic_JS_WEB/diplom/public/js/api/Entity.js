@@ -1,14 +1,10 @@
 class Entity { // Базовый калсс для взаимодействия с сервером.
-  constructor() {
-       this.HOST = "http://localhost:8000/";
-       this.URL = "account/";
-   }
   static list( data, callback = f => f ) { // Запрашивает с сервера список данных.
     return createRequest({
       'url' : `${this.HOST}${this.URL}/list`,
       'method' : 'GET',
       'responseType' : 'json',
-      'data' : { 'id' : data.id, 'mail' : data.mail, 'password' : data.password },
+      'data' : { 'id' : data.id, 'mail' : data.mail, 'name' : data.name },
       'callback' : callback
     });
   }
@@ -43,6 +39,8 @@ class Entity { // Базовый калсс для взаимодействия 
     });
   }
 }
+Entity.HOST = "http://localhost:8000/";
+Entity.URL = "account";
 // Вызов
 /*
 Entity.create({

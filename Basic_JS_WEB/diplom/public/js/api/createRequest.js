@@ -11,6 +11,6 @@ const createRequest = (options = {}) => { // Основная функция д�
   }
   xhr.addEventListener('readystatechange', () => { if (xhr.readyState === xhr.DONE) { options.callback(xhr.response.error, xhr.response); } });
   xhr.open(options.method, options.url);
-  try { options.url.indexOf('?') > -1 ? xhr.send() : xhr.send(formData); } catch (error) { console.error(error); }
+  try { xhr.send(formData); } catch (error) { console.error(error); }
   return xhr;
 };

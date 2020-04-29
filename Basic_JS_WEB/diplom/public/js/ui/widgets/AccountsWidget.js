@@ -1,8 +1,4 @@
-/**
- * Класс AccountsWidget управляет блоком
- * отображения счетов в боковой колонке
- * */
-class AccountsWidget {
+class AccountsWidget { // Управляет блоком отображения счетов в боковой колонке
   /**
    * Устанавливает текущий элемент в свойство element
    * Регистрирует обработчики событий с помощью
@@ -13,7 +9,13 @@ class AccountsWidget {
    * необходимо выкинуть ошибку.
    * */
   constructor( element ) {
-
+    if (element) {
+      this.element = element;
+      this.registerEvents();
+      this.update();
+    } else {
+      console.error('Передан пустой или несуществующий элемент!');
+    }
   }
 
   /**
@@ -24,7 +26,15 @@ class AccountsWidget {
    * вызывает AccountsWidget.onSelectAccount()
    * */
   registerEvents() {
-
+    document.getElementsByClassName('create-account')[0].addEventListener('click', (e) => {
+      new Modal(App.getModal('createAccount').element).open();
+    });
+    let el = document.getElementsByClassName('sidebar-menu accounts-panel')[0].querySelectorAll('account');
+    for (let i = 0; i < el.length; i++) {
+      el[i].addEventListener('click', () => {
+        this.onSelectAccount();
+      });
+    }
   }
 
   /**
@@ -38,7 +48,17 @@ class AccountsWidget {
    * метода renderItem()
    * */
   update() {
-
+    if(User.current()) {
+      Account.list({
+        'id' : User.current().id,
+        'mail' : User.current().email,
+        'name' : User.current().name
+      }, (err, res) => {
+        console.log(JSON.parse(res));
+      });
+      // this.clear();
+      // this.renderItem();
+    }
   }
 
   /**
@@ -47,7 +67,10 @@ class AccountsWidget {
    * в боковой колонке
    * */
   clear() {
-
+    let el = document.getElementsByClassName('sidebar-menu accounts-panel')[0].querySelectorAll('account');
+    for (let i = 0; i < el.length; i++) {
+      el[i].remove();
+    }
   }
 
   /**

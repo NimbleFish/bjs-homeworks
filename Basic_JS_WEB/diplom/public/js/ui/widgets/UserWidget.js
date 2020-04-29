@@ -9,7 +9,6 @@ class UserWidget { // Отвечает за отображение информ�
 
   update() { // Получает информацию о текущем пользователе
     let info = User.current();
-    console.log(info);
     if (info) {
       document.getElementsByClassName('user-name')[0].innerText = info.name;
     }
