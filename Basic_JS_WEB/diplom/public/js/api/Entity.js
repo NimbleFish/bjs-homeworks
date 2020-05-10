@@ -66,7 +66,6 @@ Entity.list({
 });
 
 Entity.remove('1', {
-  'id' : id,
   'mail' : 'demo@mail.ru',
   'password' : 'demo'
 }, (err, res) => {

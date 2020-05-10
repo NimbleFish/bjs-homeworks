@@ -10,16 +10,14 @@ class AccountsWidget { // Управляет блоком отображения
   }
 
   registerEvents() {
+    document.addEventListener('DOMContentLoaded', () => {
+      for (let i = 0; i < document.querySelectorAll('.accounts-panel .account').length; i++) {
+        console.log(i);
+      }
+    });
     document.getElementsByClassName('create-account')[0].addEventListener('click', (e) => {
       new Modal(App.getModal('createAccount').element).open();
     });
-    let el = document.getElementsByClassName('sidebar-menu accounts-panel')[0].querySelectorAll('.account');
-    for (let i = 0; i < el.length; i++) {
-      console.log(el[i]);
-      el[i].addEventListener('click', () => {
-        this.onSelectAccount(el[i]);
-      });
-    }
   }
 
   update() {
@@ -44,6 +42,7 @@ class AccountsWidget { // Управляет блоком отображения
    * Вызывает App.showPage( 'transactions', { account_id: id_счёта });
    * */
   onSelectAccount( element ) {
+    console.log(element);
     let el = document.getElementsByClassName('sidebar-menu accounts-panel')[0].querySelectorAll('.account');
     for (let i = 0; i < el.length; i++) {
       element.classList.remove('active');
