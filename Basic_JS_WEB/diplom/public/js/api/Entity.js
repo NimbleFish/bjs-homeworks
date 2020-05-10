@@ -1,7 +1,7 @@
 class Entity { // Базовый калсс для взаимодействия с сервером.
   static list( data, callback = f => f ) { // Запрашивает с сервера список данных.
     return createRequest({
-      'url' : `${this.HOST}${this.URL}/list`,
+      'url' : `${this.HOST}${this.URL}list`,
       'method' : 'GET',
       'responseType' : 'json',
       'data' : { 'id' : data.id, 'mail' : data.mail, 'name' : data.name },
@@ -14,14 +14,14 @@ class Entity { // Базовый калсс для взаимодействия 
       'url' : `${this.HOST}${this.URL}`,
       'method' : 'POST',
       'responseType' : 'json',
-      'data' : { 'mail' : data.mail, 'password' : data.password, '_method' : 'PUT' },
+      'data' : { 'id' : data.id, 'mail' : data.mail, 'name' : data.name, 'password' : data.password, '_method' : 'PUT' },
       'callback' : callback
     });
   }
 
   static get( id = '', data, callback = f => f ) { // Получает информацию о счёте или доходе/расходе
     return createRequest({
-      'url' : `${this.HOST}${this.URL}/get`,
+      'url' : `${this.HOST}${this.URL}get`,
       'method' : 'GET',
       'responseType' : 'json',
       'data' : { 'id' : id, 'mail' : data.mail, 'password' : data.password },
@@ -40,7 +40,7 @@ class Entity { // Базовый калсс для взаимодействия 
   }
 }
 Entity.HOST = "http://localhost:8000/";
-Entity.URL = "account";
+Entity.URL = "";
 // Вызов
 /*
 Entity.create({

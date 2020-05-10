@@ -5,14 +5,14 @@
       "email": "demo@demo",
       "password": "demo",
       "id": "1",
-      "isAuthorized": false
+      "isAuthorized": true
     },
     {
       "name": "Vlad",
       "email": "test@test.ru",
       "password": "abracadabra",
       "id": "5phvd7j4k8rghvho",
-      "isAuthorized": true
+      "isAuthorized": false
     },
     {
       "name": "Vlad1",
@@ -159,6 +159,50 @@
     {
       "user_id": "5phvd7j4k8rghvho",
       "id": "5phvd6lok9l9kc67"
+    },
+    {
+      "user_id": "1",
+      "id": "5phvd6ucka0x3tr0"
+    },
+    {
+      "user_id": "1",
+      "id": "5phvdx8ka0x47wn"
+    },
+    {
+      "user_id": "1",
+      "id": "5phvda9cka0x6nmc"
+    },
+    {
+      "user_id": "1",
+      "id": "5phvd65kka0x9gx7"
+    },
+    {
+      "user_id": "1",
+      "id": "5phvdv8ka0y4i6z"
+    },
+    {
+      "user_id": "1",
+      "id": "5phvd5qkka0y6clh"
+    },
+    {
+      "name": "demo",
+      "user_id": "1",
+      "id": "5phvd9koka0y8ipj"
+    },
+    {
+      "name": "Fish",
+      "user_id": "1",
+      "id": "5phvd95kka0ybjst"
+    },
+    {
+      "name": "Fish",
+      "user_id": "1",
+      "id": "5phvd4w4ka0yewyy"
+    },
+    {
+      "name": "Fish",
+      "user_id": "1",
+      "id": "5phvd1jkka0ygeky"
     }
   ],
   "transactions": [

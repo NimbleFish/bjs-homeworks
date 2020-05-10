@@ -18,7 +18,7 @@ class User { // Класс User управляет авторизацией, в�
   static fetch( data, callback = f => f ) { // Получает информацию о текущем авторизованном пользователе.
     if (data === undefined) { data = { 'id' : undefined, 'name' : undefined, 'email' : undefined } };
     return createRequest({
-      'url' : 'http://localhost:8000/user/current',
+      'url' : `${this.HOST}${this.URL}/current`,
       'method' : 'GET',
       'responseType' : 'json',
       'data' : { 'id' : data.id, 'name' : data.name, 'email' : data.email },
@@ -28,7 +28,7 @@ class User { // Класс User управляет авторизацией, в�
 
   static login( data, callback = f => f ) { // Производит попытку авторизации.
     return createRequest({
-      'url' : 'http://localhost:8000/user/login',
+      'url' : `${this.HOST}${this.URL}/login`,
       'method' : 'POST',
       'responseType' : 'json',
       'data' : { 'email' : data.email, 'password' : data.password },
@@ -38,7 +38,7 @@ class User { // Класс User управляет авторизацией, в�
 
   static register( data, callback = f => f ) { // Производит попытку регистрации пользователя.
     return createRequest({
-      'url' : 'http://localhost:8000/user/register',
+      'url' : `${this.HOST}${this.URL}/register`,
       'method' : 'POST',
       'responseType' : 'json',
       'data' : { 'name' : data.name, 'email' : data.email, 'password' : data.password },
@@ -48,7 +48,7 @@ class User { // Класс User управляет авторизацией, в�
 
   static logout( data, callback = f => f ) { // Производит выход из приложения.
     return createRequest({
-      'url' : 'http://localhost:8000/user/logout',
+      'url' : `${this.HOST}${this.URL}/logout`,
       'method' : 'POST',
       'responseType' : 'json',
       'data' : { 'email' : data.email, 'password' : data.password },
@@ -56,6 +56,9 @@ class User { // Класс User управляет авторизацией, в�
     });
   }
 }
+
+User.HOST = 'http://localhost:8000/';
+User.URL = 'user'
 
 // Вызов User.register(...);
 /*
