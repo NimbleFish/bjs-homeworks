@@ -3,7 +3,6 @@ class AsyncForm { // Управляет всеми формами приложе
     if (!element) {
       console.error("Передана пустая или несуществующая форма!");
     } else {
-      console.log(element);
       this.element = element;
       this.registerEvents();
     }
