@@ -16,7 +16,7 @@ class AsyncForm { // Управляет всеми формами приложе
   }
 
   getData() { // Преобразует данные формы в объект FormData
-    let el = document.querySelectorAll(`#${this.element.id} input.form-control`), data = {};
+    let el = document.querySelectorAll(`#${this.element.id} input`), data = {};
     for (let i = 0; i < el.length; i++) {
       data[el[i].name] = el[i].value;
     }
