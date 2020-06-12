@@ -32,7 +32,7 @@ class App {
    * */
   static initUser() {
     User.fetch(User.current(), () =>
-      this.setState( User.current() ? 'user-logged' : 'init' )
+      this.setState( User.current() ? 'user-logged' : 'init' );
     );
   }
 
