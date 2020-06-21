@@ -6,11 +6,7 @@ class CreateTransactionForm extends AsyncForm { // Управляет формо
   }
 
   renderAccountsList() {
-    Account.list({
-      'id': User.current().id,
-      'mail': User.current().email,
-      'name': User.current().name
-    }, (err, res) => {
+    Account.list(User.current(), (err, res) => {
       res = JSON.parse(res);
       if (res.success == true) {
         if (document.getElementsByClassName('form-control accounts-select')[0].children.length == 0 || this.update == true) {
@@ -28,11 +24,6 @@ class CreateTransactionForm extends AsyncForm { // Управляет формо
   }
 
   update() {
-    this.update = true();
-    while (document.getElementsByClassName('form-control accounts-select')[0].childElementCount > 0 || document.getElementsByClassName('form-control accounts-select')[1].childElementCount > 0) {
-      document.getElementsByClassName('form-control accounts-select')[0].children[0].remove();
-      document.getElementsByClassName('form-control accounts-select')[1].children[0].remove();
-    }
     this.renderAccountsList();
   }
   /**
@@ -42,17 +33,12 @@ class CreateTransactionForm extends AsyncForm { // Управляет формо
    * в котором находится форма
    * */
   onSubmit( options ) {
-    console.log(options);
-    Transaction.URL = 'transaction/'
-    Transaction.create({
-      'name' : options.data.name,
-      'method' : options.data.method,
-      'data' : options.data,
-    }, (err, res) => {
+    Transaction.URL = '?account_id=1'
+    Transaction.create(options.data, (err, res) => {
         console.log(JSON.parse(res));
-      });
-    App.update();
-    new Modal(App.getModal('newIncome').element).close();
-    new Modal(App.getModal('newExpense').element).close();
+    });
+    // App.update();
+    // new Modal(App.getModal('newIncome').element).close();
+    // new Modal(App.getModal('newExpense').element).close();
   }
 }

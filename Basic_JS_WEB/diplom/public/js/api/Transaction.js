@@ -2,4 +2,4 @@ class Transaction extends Entity { // Управляет счетами поль
 
 }
 
-Transaction.URL = "transaction/";
+Transaction.URL = "transaction";

@@ -41,34 +41,3 @@ class Entity { // Базовый калсс для взаимодействия 
 }
 Entity.HOST = "http://localhost:8000/";
 Entity.URL = "";
-// Вызов
-/*
-Entity.create({
-  'id' : 1,
-  'mail' : 'demo@mail.ru',
-  'password' : 'demo'
-}, (err, res) => {
-  console.log(JSON.parse(res));
-});
-
-Entity.get('1', {
-  'mail' : 'demo@mail.ru',
-  'password' : 'demo'
-}, (err, res) => {
-  console.log(JSON.parse(res));
-});
-
-Entity.list({
-  'mail' : 'demo@mail.ru',
-  'password' : 'demo'
-}, (err, res) => {
-  console.log(JSON.parse(res));
-});
-
-Entity.remove('1', {
-  'mail' : 'demo@mail.ru',
-  'password' : 'demo'
-}, (err, res) => {
-  console.log(res);
-});
-*/
