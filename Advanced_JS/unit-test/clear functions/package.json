@@ -1,0 +1,29 @@
+{
+  "name": "clear-functions",
+  "version": "1.0.0",
+  "description": "clear-functions js",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "\u0016https://github.com/NimbleFIsh/bjs-homeworks/tree/master/Advanced_JS/unit-test/clear-functions"
+  },
+  "keywords": [
+    "clear",
+    "functions"
+  ],
+  "author": "NimbleFish",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
+    "babel-jest": "^26.1.0",
+    "jest": "^26.1.0"
+  },
+  "dependencies": {
+    "core-js": "^3.6.5"
+  }
+}
