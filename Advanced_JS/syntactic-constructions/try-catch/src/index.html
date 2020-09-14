@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>Try-catch</title>
+  </head>
+  <body>
+    <style type="text/css">
+      .status_result {
+        display: none;
+      }
+      .active {
+        display: block !important;
+      }
+    </style>
+    <div id="result" class="status_result">Статус: <span id="resultOut"></span></div>
+    <label for="tovarCount">Введите сколько товара хотите купить</label>
+    <input id="tovarCount" type="text">
+    <div id="sub" style="cursor: pointer;">Посчитать</div>
+    <script type="module">
+      import calc from "./src/index.js";
+      document.getElementById('sub').addEventListener('click', (event) => {
+        let result = document.getElementById('result'),
+            resultOut = document.getElementById('resultOut'),
+            count  = document.getElementById('tovarCount').value;
+
+        let num = calc(count);
+        if (typeof(num) == 'number') {
+          result.classList.add('active');
+          resultOut.innerText = "Хороший выбор! " + num + " - хорошее число!";
+        } else {
+          result.classList.add('active');
+          resultOut.innerText = num;
+        }
+      });
+    </script>
+  </body>
+</html>
