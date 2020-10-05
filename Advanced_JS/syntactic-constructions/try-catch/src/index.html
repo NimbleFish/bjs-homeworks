@@ -22,9 +22,8 @@
       document.getElementById('sub').addEventListener('click', (event) => {
         let result = document.getElementById('result'),
             resultOut = document.getElementById('resultOut'),
-            count  = document.getElementById('tovarCount').value;
-
-        let num = calc(count);
+            count  = document.getElementById('tovarCount').value,
+            num = calc(count);
         if (typeof(num) == 'number') {
           result.classList.add('active');
           resultOut.innerText = "Хороший выбор! " + num + " - хорошее число!";
