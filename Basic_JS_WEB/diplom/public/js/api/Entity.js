@@ -1,43 +1,41 @@
-class Entity { // Базовый калсс для взаимодействия с сервером.
-  static list( data, callback = f => f ) { // Запрашивает с сервера список данных.
-    return createRequest({
-      'url' : `${this.HOST}${this.URL}list`,
-      'method' : 'GET',
-      'responseType' : 'json',
-      'data' : { 'id' : data.id, 'mail' : data.mail, 'name' : data.name },
-      'callback' : callback
-    });
+/**
+ * Класс Entity - базовый для взаимодействия с сервером.
+ * Имеет свойство URL, равно пустой строке.
+ * */
+class Entity {
+
+  /**
+   * Запрашивает с сервера список данных.
+   * Это могут быть счета или доходы/расходы
+   * (в зависимости от того, что наследуется от Entity)
+   * */
+  static list( data, callback = f => f ) {
+
   }
 
-  static create( data, callback = f => f ) { // Создаёт счёт или доход/расход с помощью запроса на сервер.
-    return createRequest({
-      'url' : `${this.HOST}${this.URL}`,
-      'method' : 'POST',
-      'responseType' : 'json',
-      'data' : { 'id' : data.id, 'mail' : data.mail, 'name' : data.name, 'password' : data.password, '_method' : 'PUT' },
-      'callback' : callback
-    });
+  /**
+   * Создаёт счёт или доход/расход с помощью запроса
+   * на сервер. (в зависимости от того,
+   * что наследуется от Entity)
+   * */
+  static create( data, callback = f => f ) {
+
   }
 
-  static get( id = '', data, callback = f => f ) { // Получает информацию о счёте или доходе/расходе
-    return createRequest({
-      'url' : `${this.HOST}${this.URL}get`,
-      'method' : 'GET',
-      'responseType' : 'json',
-      'data' : { 'id' : id, 'mail' : data.mail, 'password' : data.password },
-      'callback' : callback
-    });
+  /**
+   * Получает информацию о счёте или доходе/расходе
+   * (в зависимости от того, что наследуется от Entity)
+   * */
+  static get( id = '', data, callback = f => f ) {
+
   }
 
-  static remove( id = '', data, callback = f => f ) { // Удаляет информацию о счёте или доходе/расходе
-    return createRequest({
-      'url' : `${this.HOST}${this.URL}`,
-      'method' : 'POST',
-      'responseType' : 'json',
-      'data' : { 'id' : id, 'mail' : data.mail, 'password' : data.password, '_method' : 'DELETE' },
-      'callback' : callback
-    });
+  /**
+   * Удаляет информацию о счёте или доходе/расходе
+   * (в зависимости от того, что наследуется от Entity)
+   * */
+  static remove( id = '', data, callback = f => f ) {
+
   }
 }
-Entity.HOST = "http://localhost:8000/";
-Entity.URL = "";
+

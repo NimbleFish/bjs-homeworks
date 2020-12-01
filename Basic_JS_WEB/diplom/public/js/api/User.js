@@ -1,128 +1,66 @@
-class User { // Класс User управляет авторизацией, выходом и регистрацией пользователя из приложения.
-  static setCurrent(user) { // Устанавливает текущего пользователя в локальном хранилище.
-    localStorage.user = JSON.stringify(user);
+/**
+ * Класс User управляет авторизацией, выходом и
+ * регистрацией пользователя из приложения
+ * Имеет свойство URL, равное '/user'.
+ * */
+class User {
+  /**
+   * Устанавливает текущего пользователя в
+   * локальном хранилище.
+   * */
+  static setCurrent(user) {
+
   }
 
-  static unsetCurrent() { // даляет информацию об авторизованном пользователе из локального хранилища.
-    delete localStorage.user;
+  /**
+   * Удаляет информацию об авторизованном
+   * пользователе из локального хранилища.
+   * */
+  static unsetCurrent() {
+
   }
 
-  static current() { // Возвращает текущего авторизованного пользователя из локального хранилища.
-    if (localStorage.user !== undefined) {
-      return JSON.parse(localStorage.user);
-    } else {
-      return undefined;
-    }
+  /**
+   * Возвращает текущего авторизованного пользователя
+   * из локального хранилища
+   * */
+  static current() {
+
   }
 
-  static fetch( data, callback = f => f ) { // Получает информацию о текущем авторизованном пользователе.
-    if (data === undefined) { data = { 'id' : undefined, 'name' : undefined, 'email' : undefined } };
-    return createRequest({
-      'url' : `${this.HOST}${this.URL}/current`,
-      'method' : 'GET',
-      'responseType' : 'json',
-      'data' : { 'id' : data.id, 'name' : data.name, 'email' : data.email },
-      'callback' : callback
-    });
+  /**
+   * Получает информацию о текущем
+   * авторизованном пользователе.
+   * */
+  static fetch( data, callback = f => f ) {
+
   }
 
-  static login( data, callback = f => f ) { // Производит попытку авторизации.
-    return createRequest({
-      'url' : `${this.HOST}${this.URL}/login`,
-      'method' : 'POST',
-      'responseType' : 'json',
-      'data' : { 'email' : data.email, 'password' : data.password },
-      'callback' : callback
-    });
+  /**
+   * Производит попытку авторизации.
+   * После успешной авторизации необходимо
+   * сохранить пользователя через метод
+   * User.setCurrent.
+   * */
+  static login( data, callback = f => f ) {
+
   }
 
-  static register( data, callback = f => f ) { // Производит попытку регистрации пользователя.
-    return createRequest({
-      'url' : `${this.HOST}${this.URL}/register`,
-      'method' : 'POST',
-      'responseType' : 'json',
-      'data' : { 'name' : data.name, 'email' : data.email, 'password' : data.password },
-      'callback' : callback
-    });
+  /**
+   * Производит попытку регистрации пользователя.
+   * После успешной авторизации необходимо
+   * сохранить пользователя через метод
+   * User.setCurrent.
+   * */
+  static register( data, callback = f => f ) {
+
   }
 
-  static logout( data, callback = f => f ) { // Производит выход из приложения.
-    return createRequest({
-      'url' : `${this.HOST}${this.URL}/logout`,
-      'method' : 'POST',
-      'responseType' : 'json',
-      'data' : { 'email' : data.email, 'password' : data.password },
-      'callback' : callback
-    });
+  /**
+   * Производит выход из приложения. После успешного
+   * выхода необходимо вызвать метод User.unsetCurrent
+   * */
+  static logout( data, callback = f => f ) {
+
   }
 }
-
-User.HOST = 'http://localhost:8000/';
-User.URL = 'user'
-
-// Вызов User.register(...);
-/*
-User.register({
-	'name' : 'Alex91',
-	'email' : '1234567891@mail.ru',
-	'password' : '1234567891'
-}, (err, res) => {
-  if(err) {
-    console.error(err);
-  }
-	console.log(res);
-	if (res.success === true) {
-		User.setCurrent(res.user);
-		console.log(res.user);
-    }
-});
-*/
-
-// Вызов User.login(...);
-/*
-User.login({
-	'email' : '1234567891@mail.ru',
-	'password' : '1234567891'
-}, (err, res) => {
-  if(err) {
-    console.error(err);
-  }
-	console.log(res);
-	if (res.success === true) {
-		User.setCurrent(res.user);
-		console.log(res.user);
-    }
-});
-*/
-
-// Вызов User.logout(...);
-/*
-User.logout({
-	'email' : '1234567891@mail.ru',
-	'password' : '1234567891'
-}, (err, res) => {
-  if(err) {
-    console.error(err);
-  }
-	console.log(res);
-	if (res.success === true) {
-		User.unsetCurrent();
-		console.log(res.user);
-    }
-});
-*/
-
-// Вызов User.fetch(...);
-/*
-User.fetch(User.current(), (err, res) => {
-  res = JSON.parse(res);
-	console.log(res);
-	if (res.success === true) {
-    User.setCurrent(res.user);
-		console.log(res.user);
-  } else {
-    console.error("Необходима авторизация");
-    User.unsetCurrent();
-  }
-});
-*/

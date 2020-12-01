@@ -1,40 +1,53 @@
-class Modal { // Класс Modal отвечает за управление всплывающими окнами.
-  constructor( element ) { // Устанавливает текущий элемент, регистрирует обработчики событий.
-    if (!element) {
-      console.error("Передан пустой или несуществующий элемент!");
-    } else {
-      this.element = element;
-      this.registerEvents()
-    }
+/**
+ * Класс Modal отвечает за
+ * управление всплывающими окнами.
+ * В первую очередь это открытие или
+ * закрытие имеющихся окон
+ * */
+class Modal {
+  /**
+   * Устанавливает текущий элемент в свойство element
+   * Регистрирует обработчики событий с помощью Modal.registerEvents()
+   * Если переданный элемент не существует,
+   * необходимо выкинуть ошибку.
+   * */
+  constructor( element ) {
+
   }
 
-  registerEvents() { // При нажатии на элемент должен закрыть текущее окно.
-    this.element.querySelector('button.btn.btn-default.pull-left').addEventListener('click', (e) => {
-      e.preventDefault();
-      this.onClose(e);
-    });
-    this.element.querySelector('button.close').addEventListener('click', (e) => {
-      e.preventDefault();
-      this.onClose(e);
-    });
+  /**
+   * При нажатии на элемент с data-dismiss="modal"
+   * должен закрыть текущее окно
+   * (с помощью метода Modal.onClose)
+   * */
+  registerEvents() {
+
   }
 
-  onClose(e) { // Закрывает текущее окно.
-    e.preventDefault();
-    this.close();
-  }
+  /**
+   * Срабатывает после нажатия на элементы, закрывающие окно.
+   * Закрывает текущее окно (Modal.close())
+   * */
+  onClose( e ) {
 
-  unregisterEvents() { // Удаляет обработчики событий.
-    this.element.removeEventListener('click', (e) => {
-      this.onClose(e);
-    });
   }
+  /**
+   * Удаляет обработчики событий
+   * */
+  unregisterEvents() {
 
-  open() { // Открывает окно.
-    this.element.style.display = "block";
   }
+  /**
+   * Открывает окно: устанавливает CSS-свойство display
+   * со значением «block»
+   * */
+  open() {
 
-  close(){ // Закрывает окно.
-    this.element.style.display = "none";
+  }
+  /**
+   * Закрывает окно: удаляет CSS-свойство display
+   * */
+  close(){
+
   }
 }
