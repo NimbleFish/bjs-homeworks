@@ -9,7 +9,7 @@ function ShopItemFunc(props) {
       <div class="highlight-window mobile"><div class="highlight-overlay" /></div>
       <div class="divider" />
       <div class="purchase-info">
-        <div class="price">{item.currency}{item.price}</div>
+        <div class="price">{item.currency}{item.price}.00</div>
         <button>Добавить в корзину</button>
       </div>
     </div>
