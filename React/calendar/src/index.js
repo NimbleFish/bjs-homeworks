@@ -4,9 +4,11 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+const date = new Date();
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App data={date} />
   </React.StrictMode>,
   document.getElementById('root')
 );
