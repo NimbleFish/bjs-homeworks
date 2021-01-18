@@ -20,14 +20,15 @@ const data = {
   ]
 }
 
-function getInfo() {
+export function getInfo(dataIn) {
+  console.log(dataIn);
   const DEFAULT = 'Описание недоступно';
   let exit_data = [];
-  for (let i = 0; i < data.special.length; i++) {
-    if (data.special[i].description) {
-      exit_data.push(data.special[i]);
+  for (let i = 0; i < dataIn.special.length; i++) {
+    if (dataIn.special[i].description) {
+      exit_data.push(dataIn.special[i]);
     } else {
-      let new_data = data.special[i];
+      let new_data = dataIn.special[i];
       new_data.description = DEFAULT;
       exit_data.push(new_data);
     }
@@ -35,4 +36,4 @@ function getInfo() {
   return exit_data;
 }
 
-console.log(getInfo());
+console.log(getInfo(data));
