@@ -35,4 +35,3 @@ export class Unnamed {
 }
 
 console.log(new Unnamed().character('Юра', 'Swordsman'));
-// prototypes_constructors
