@@ -17,7 +17,7 @@ test('Error by name type', () => {
 
 test('Complete name', () => {
   const result = new Unnamed().character('Юра', 'Swordsman', true);
-  expect(result).toEqual({health:100,level:1,name:"Юра",specifications:{attack:40,defence:10},type:"Swordsman"});
+  expect(result).toEqual({health:100,level:1,name:"Юра",defence:40,specifications:{attack:40,defence:10},type:"Swordsman"});
 });
 
 test('Error by type 1', () => {
@@ -37,5 +37,16 @@ test('Error by type 2', () => {
 
 test('Complete type', () => {
   const result = new Unnamed().character('Юра', 'Swordsman', true);
-  expect(result).toEqual({health:100,level:1,name:"Юра",specifications:{attack:40,defence:10},type:"Swordsman"});
+  expect(result).toEqual({health:100,level:1,name:"Юра",defence:40,specifications:{attack:40,defence:10},type:"Swordsman"});
+});
+
+test('__proto__ no call', () => {
+  const result = new Unnamed().character('Юра', 'Swordsman', true);
+  expect(result.health).toEqual(100);
+});
+
+test('__proto__ call', () => {
+  const result = new Unnamed().character('Юра', 'Swordsman', true);
+  result.__proto__(10);
+  expect(result.health).toEqual(94);
 });

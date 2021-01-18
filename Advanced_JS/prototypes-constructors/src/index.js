@@ -23,7 +23,13 @@ export class Unnamed {
       this.type = type;
       this.health = 100;
       this.level = 1;
+      this.defence = 40;
       this.specifications = types[type];
+      this.__proto__ = function damage(points) {
+        if (this.health >= 0) {
+          this.health -= points * (1 - this.defence / 100);
+        }
+      }
       return this;
     } else {
       if (!testMode) {
@@ -34,4 +40,7 @@ export class Unnamed {
   }
 }
 
-console.log(new Unnamed().character('Юра', 'Swordsman'));
+let obj = new Unnamed().character('Юра', 'Swordsman');
+console.log('health до вызова __proto__: ' + obj.health);
+obj.__proto__(10);
+console.log('health после вызова __proto__: ' + obj.health);
