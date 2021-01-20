@@ -20,8 +20,9 @@ const data = {
   ]
 }
 
-export function getInfo(dataIn) {
-  console.log(dataIn);
+export function getInfo(input) {
+  let dataIn = {};
+  Object.assign(dataIn, input);
   const DEFAULT = 'Описание недоступно';
   let exit_data = [];
   for (let i = 0; i < dataIn.special.length; i++) {
