@@ -25,7 +25,7 @@ export class Unnamed {
       this.level = 1;
       this.defence = 40;
       this.specifications = types[type];
-      this.__proto__ = function damage(points) {
+      this.__proto__ = (points) => {
         if (this.health >= 0) {
           this.health -= points * (1 - this.defence / 100);
         }
