@@ -21,17 +21,15 @@ const data = {
 }
 
 export function getInfo(dataIn) {
-  console.log(dataIn);
   const DEFAULT = 'Описание недоступно';
-  let exit_data = [];
+  let exit_data = [], access = true;
   for (let i = 0; i < dataIn.special.length; i++) {
-    if (dataIn.special[i].description) {
-      exit_data.push(dataIn.special[i]);
-    } else {
-      let new_data = dataIn.special[i];
-      new_data.description = DEFAULT;
-      exit_data.push(new_data);
-    }
+    let obj = {};
+    for (const [key, value] of Object.entries(dataIn.special[i])) obj[key] = value;
+    access = true;
+    for (let prop in obj) if (obj.hasOwnProperty(prop) && prop == 'description') access = false;
+    if (access) obj['description'] = DEFAULT;
+    exit_data.push(obj);
   }
   return exit_data;
 }
