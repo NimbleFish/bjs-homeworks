@@ -20,13 +20,7 @@ const data = {
   ]
 }
 
-<<<<<<< HEAD
 export function getInfo(dataIn) {
-=======
-export function getInfo(input) {
-  let dataIn = {};
-  Object.assign(dataIn, input);
->>>>>>> 9178f9d0d44bd550fbda5584eb83c4aafb593cf1
   const DEFAULT = 'Описание недоступно';
   let exit_data = [], access = true;
   for (let i = 0; i < dataIn.special.length; i++) {
