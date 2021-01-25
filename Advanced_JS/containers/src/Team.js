@@ -1,3 +1,4 @@
+import ErrorRepository from './ErrorRepository';
 export default class Team {
   constructor() {
     this.team = new Set();
@@ -7,7 +8,8 @@ export default class Team {
     if (!this.team.has(member)) {
       this.team.add(member);
     } else {
-      throw('Уже есть в комманде!');
+      // throw('Уже есть в комманде!');
+      console.error(new ErrorRepository().translate(224));
     }
   }
 
