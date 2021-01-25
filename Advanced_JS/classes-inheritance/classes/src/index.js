@@ -20,7 +20,25 @@ console.log('class Daemon (attack: ' + daemon.attack + ', defence: ' + daemon.de
 console.log('class Undead (attack: ' + undead.attack + ', defence: ' + undead.defence + ')');
 console.log('class Zombie (attack: ' + zombie.attack + ', defence: ' + zombie.defence + ')');
 console.log('');
+
 console.log('Swordsman level: ' + swordsman.level);
 console.log('class Swordsman levelUp!');
 swordsman.levelUp();
 console.log('Swordsman level: ' + swordsman.level);
+console.log('');
+
+console.log('class Zombie впал в ярость!');
+zombie.powerModeSet = true;
+console.log('Атака №1 - powerMode: '+ zombie.powerMode);
+zombie.setAttack();
+console.log('Атака №2 - powerMode: '+ zombie.powerMode);
+zombie.setAttack();
+console.log(zombie.powerModeGet);
+console.log('Атака №3 - powerMode: '+ zombie.powerMode);
+zombie.setAttack();
+console.log('Атака №4 - powerMode: '+ zombie.powerMode);
+console.log(zombie.powerModeGet);
+console.log('');
+
+console.log('Повторная активация powerMode...');
+zombie.powerModeSet = true;
