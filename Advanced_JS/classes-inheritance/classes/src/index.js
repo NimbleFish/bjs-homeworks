@@ -12,9 +12,15 @@ const daemon = new Daemon();
 const undead = new Undead();
 const zombie = new Zombie();
 
+console.log('');
 console.log('class Bowerman (attack: ' + bowerman.attack + ', defence: ' + bowerman.defence + ')');
 console.log('class Swordsman (attack: ' + swordsman.attack + ', defence: ' + swordsman.defence + ')');
 console.log('class Magician (attack: ' + magician.attack + ', defence: ' + magician.defence + ')');
 console.log('class Daemon (attack: ' + daemon.attack + ', defence: ' + daemon.defence + ')');
 console.log('class Undead (attack: ' + undead.attack + ', defence: ' + undead.defence + ')');
 console.log('class Zombie (attack: ' + zombie.attack + ', defence: ' + zombie.defence + ')');
+console.log('');
+console.log('Swordsman level: ' + swordsman.level);
+console.log('class Swordsman levelUp!');
+swordsman.levelUp();
+console.log('Swordsman level: ' + swordsman.level);

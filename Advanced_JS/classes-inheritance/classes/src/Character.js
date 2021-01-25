@@ -2,6 +2,8 @@ export default class Character {
   constructor(attack, defence) {
     this.attack = attack;
     this.defence = defence;
+    this.health = 100;
+    this.level = 1;
   }
 
   levelUp() {
@@ -11,7 +13,7 @@ export default class Character {
       this.defence = this.defence + (this.defence * 0.2);
       this.health = 100;
     } else {
-      new throw('Нельзя повысить уровень умершего!');
+      throw('Нельзя повысить уровень умершего!');
     }
   }
 }
