@@ -42,6 +42,17 @@ export default class Settings {
         }
       }
     }
+    if (this.theme == undefined && this.music == undefined && this.difficulty == undefined) {
+      return 'А хде данные?';
+    }
     return this.DEFAULT;
+  }
+
+  toArray(map) {
+    let result = [];
+    for (let val of map) {
+      result.push(val);
+    }
+    return result;
   }
 }

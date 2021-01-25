@@ -10,4 +10,4 @@ team.addAll('Mike', 23, 23, 'mief');
 console.log(team.toArray());
 
 console.log(new Settings().DEFAULT);
-console.log(new Settings('gray', 'off', 'nightmare').change);
+console.log(new Settings().toArray(new Settings('gray', 'off', 'nightmare').change));
