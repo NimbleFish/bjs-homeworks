@@ -1,5 +1,7 @@
 export default class Character {
   constructor(attack, defence) {
+    this.name = '';
+    this.type = '';
     this.attack = attack;
     this.defence = defence;
     this.health = 100;
