@@ -44,5 +44,5 @@ export class Unnamed {
 
 let obj = new Unnamed().character('Юра', 'Swordsman');
 console.log('health до вызова __proto__: ' + obj.health);
-obj.prototype.damage(10);
+obj.__proto__.damage(10);
 console.log('health после вызова __proto__: ' + obj.health);
