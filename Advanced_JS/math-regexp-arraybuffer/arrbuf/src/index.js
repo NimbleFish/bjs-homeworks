@@ -1,17 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+function getBuffer() {
+  const data = '{"data":{"user":{"id":1,"name":"Hitman","level":10}}}';
+  return (input => {
+    const buffer = new ArrayBuffer(data.length * 2);
+    const bufferView = new Uint16Array(buffer);
+    for (let i = 0; i < input.length; i++) {
+      bufferView[i] = input.charCodeAt(i);
+    }
+    return buffer;
+  })(data);
+}
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+class ArrayBufferConverter {
+  load(buffer) {
+    this.buffer = new Uint16Array(buffer);
+  }
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+  toString() {
+    console.log(JSON.parse(new TextDecoder('utf-16').decode(this.buffer)));
+  }
+}
+
+const buffer = new ArrayBufferConverter();
+buffer.load(getBuffer());
+buffer.toString();
