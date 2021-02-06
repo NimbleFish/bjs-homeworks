@@ -7,7 +7,8 @@ test('check how work Map*', () => {
   expect(new Settings().change).toEqual('А хде данные?');
   expect(settings.toArray(settings.DEFAULT)).toEqual(res1);
   expect(settings.toArray(new Settings('gray', 'off', 'nightmare').change)).toEqual(res2);
-  expect(settings.toArray(new Settings(123, "chillout", "normal").change)).toEqual('Нет такой настройки');
-  expect(settings.toArray(new Settings("light", "PSY", "hard").change)).toEqual('Нет такой настройки');
-  expect(settings.toArray(new Settings("gray", "rock", "???").change)).toEqual('Нет такой настройки');
+
+  expect(new Settings('123', "chillout", "normal").change).toEqual('Нет такой настройки');
+  expect(new Settings("light", "PSY", "hard").change).toEqual('Нет такой настройки');
+  expect(new Settings("gray", "rock", "???").change).toEqual('Нет такой настройки');
 });
