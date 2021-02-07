@@ -1,10 +1,16 @@
 import Team from '../Team';
 
-test('check how work Set()', () => {
-  const team = new Team();
-  team.add('Mike');
+const team = new Team();
+test('Add "Mike"', () => {
   team.add('Person');
+  expect(team.add('Mike')).toEqual('Complete');
   team.addAll('Mike', 23, 23, 'mief');
-  expect(team.toArray()).toEqual(["Mike", "Person", 23, "mief"]);
-  expect(team.add('Mike')).toEqual('В команде уже есть этот персонаж');
+});
+
+test('addAll', () => {
+  expect(team.toArray()).toEqual(["Person", "Mike", 23, "mief"]);
+});
+
+test('Repeat "Mike"', () => {
+  expect(team.add('Mike')).toEqual('Такой персонаж уже есть в команде');
 });

@@ -4,12 +4,17 @@ export default class Team {
   }
 
   add(member) {
+    let access = true;
     for (const prop of this.team.entries()) {
-      prop.forEach((item) => {
-        if (JSON.stringify(item) === JSON.stringify(member)) throw 'Такой персонаж уже есть в команде';
-      });
+      prop.forEach((item) => {if (item === member) access = false;});
+      if (access === false) break;
     }
-    this.team.add(member);
+    if (access === false) {
+      return 'Такой персонаж уже есть в команде';
+    } else {
+      this.team.add(member);
+      return 'Complete';
+    }
   }
 
   addAll(...members) {
