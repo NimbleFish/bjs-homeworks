@@ -3,9 +3,7 @@ import read from './reader';
 
 export default class GameSavingLoader {
   read() {
-    return new Promise((resolve, reject) => {
-      resolve(read());
-    });
+    return new Promise((resolve, reject) => resolve(read()));
   }
 
   load() {

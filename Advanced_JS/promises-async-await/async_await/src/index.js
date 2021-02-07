@@ -1,5 +1,11 @@
 import './css/style.css';
+import GameSavingLoaderAsync from './js/GameSavingLoaderAsync';
 
-import './js/app';
-
-// TODO: write your code in app.js
+(async () => {
+  try {
+    const gameSaveLoaderAsync = await new GameSavingLoaderAsync().load();
+    console.log(gameSaveLoaderAsync);
+  } catch (e) {
+    console.error(e);
+  }
+})();
