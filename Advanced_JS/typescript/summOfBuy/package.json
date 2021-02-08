@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "ts build": "tsc",
-    "ts start": "tsc -w",
+    "ts_build": "tsc",
+    "ts": "tsc -w",
     "start": "webpack-dev-server --mode development",
     "build": "webpack --mode production",
     "lint": "eslint .",
