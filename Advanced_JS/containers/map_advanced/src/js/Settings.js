@@ -3,7 +3,7 @@ export default class Settings {
     this.theme = theme;
     this.music = music;
     this.difficulty = difficulty;
-    this.DEFAULT = new Map([['theme', 'dark'],['music', 'trance'],['difficulty', 'easy']]);
+    this.DEFAULT = new Map([['theme', 'dark'], ['music', 'trance'], ['difficulty', 'easy']]);
     this.THEME = ['light', 'gray'];
     this.MUSIC = ['pop', 'rock', 'chillout', 'off'];
     this.DIFFICULTY = ['normal', 'hard', 'nightmare'];
@@ -31,7 +31,7 @@ export default class Settings {
         return 'Нет такой настройки';
       }
     }
-    return (this.theme == undefined && this.music == undefined && this.difficulty == undefined) ? 'А хде данные?' : this.DEFAULT;
+    return (this.theme === undefined && this.music === undefined && this.difficulty === undefined) ? 'А хде данные?' : this.DEFAULT;
   }
 
   toArray(map) {
