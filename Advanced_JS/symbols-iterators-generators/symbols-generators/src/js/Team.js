@@ -29,8 +29,6 @@ export default class Team {
   }
 
   *[Symbol.iterator]() {
-    for (let i = 0; i < this.team.length; i++) {
-      yield this.team[i];
-    }
+    for (let i = 0; i < this.team.length; i++) yield this.team[i];
   }
 }
