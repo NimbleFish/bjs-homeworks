@@ -3,14 +3,14 @@ export default class ErrorRepository {
     this.table = new Map([
       [404, 'Ничего не найдено'],
       [224, 'В команде уже есть этот персонаж'],
-      [196, 'Нет такой настройки']
+      [196, 'Нет такой настройки'],
     ]);
   }
+
   translate(code) {
     if (this.table.has(code)) {
       return this.table.get(code);
-    } else {
-      return 'Unknown error!';
     }
+    return 'Unknown error!';
   }
 }
