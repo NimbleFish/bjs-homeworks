@@ -8,7 +8,7 @@ test('Add "Mike"', () => {
 });
 
 test('addAll', () => {
-  expect(team.toArray()).toEqual(["Person", "Mike", 23, "mief"]);
+  expect(team.toArray()).toEqual(['Person', 'Mike', 23, 'mief']);
 });
 
 test('Repeat "Mike"', () => {
