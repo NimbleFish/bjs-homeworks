@@ -8,3 +8,10 @@ export default class Character {
     // TODO: throw error if user use "new Character()"
   }
 }
+
+Character.prototype = {
+  [Symbol.iterator]() {
+    const propertyes = [this.level, this.attack, this.defence, this.health]; let index = -1; const data = this.team;
+    return { next: () => ({ value: propertyes[++index], done: !(index in data) }) };
+  }
+}
