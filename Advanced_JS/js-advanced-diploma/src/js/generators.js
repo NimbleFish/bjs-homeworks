@@ -38,7 +38,7 @@ export function* characterGenerator(allowedTypes, maxLevel) {
   if (answer === 'success') { // Если валидация успешна
     // Случайно генерирует персонажа по списку разрешённых
     do { randPers = generateRandomPersonage(); } while(!allowedTypes.includes(randPers));
-    yield randPers.name;
+    yield new randPers(maxLevel);
   } else {
     throw new Error(answer);
   }
