@@ -1,7 +1,7 @@
 export default class Character {
   constructor(level, type = 'generic') {
     if (this.constructor.name === 'Object') {
-      throw new Error(`class Character: can not create instance of abstact class`);
+      throw new Error('class Character: can not create instance of abstact class!');
     }
     this.level = level;
     this.attack = 0;
