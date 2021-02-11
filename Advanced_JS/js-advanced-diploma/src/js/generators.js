@@ -19,12 +19,9 @@ const allowedClasses = [Bowman, Swordsman, Magician, Vampire, Undead, Daemon];
 function generatorInputValidator(allowedTypes) {
   if (Array.isArray(allowedTypes)) { // Проверка списка итерируемых классов, является ли массивом
     allowedTypes.forEach((prop, i) => { // Перебор массива allowedTypes для проверки на iterable and class
-      if (!!(Object.getOwnPropertySymbols(prop.__proto__).includes(Symbol.iterator))) {// Если эл.массива итерируемый
-        if (allowedClasses.includes(prop)) { // Если эл.массива есть в спике разрешённых классов
-          if (!(new prop instanceof allowedClasses[i])) { // Если эл.массива типов не является классом, из списка разрешённых классов
-            throw new Error(`${prop} not allowed Type of character!`);
-          }
-        } else { throw new Error(`${prop} not allowed Type of character!`); }
+      if (Object.getOwnPropertySymbols(new prop(1, prop).prototype).includes(Symbol.iterator)) {// Если эл.массива итерируемый
+        // Если эл.массива нет в спике разрешённых классов
+        if (!allowedClasses.includes(prop)) { throw new Error(`${prop} not allowed Type of character!`); }
       } else { throw new Error('allowedTypes not iterable of classes'); }
     });
   } else { throw new Error('allowedTypes is not array'); }
@@ -41,14 +38,20 @@ export function* characterGenerator(allowedTypes, maxLevel) {
   if (answer === 'success') { // Если валидация успешна
     // Случайно генерирует персонажа по списку разрешённых
     do { randPers = generateRandomPersonage(); } while(!allowedTypes.includes(randPers));
-    return new randPers(maxLevel, randPers);
-  } else { throw new Error(answer); }
+    yield randPers.name;
+  } else {
+    throw new Error(answer);
+  }
 }
 
 export function generateTeam(allowedTypes, maxLevel, characterCount) {
   let answer = generatorInputValidator(allowedTypes), team = new Set();
   if (answer === 'success') { // Если валидация успешна
-    for (let i = 0; i < characterCount; i++) team.add(characterGenerator(allowedTypes, maxLevel));
+    while (team.size < characterCount) {
+      for (let varIable of characterGenerator(allowedTypes, maxLevel)) team.add(varIable);
+    }
     return team;
-  } else { throw new Error(answer); }
+  } else {
+    throw new Error(answer);
+  }
 }
