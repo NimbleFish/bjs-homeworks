@@ -47,7 +47,9 @@ export default class GameController {
     // TODO: load saved stated from stateService
   }
 
-
+  setEventListenerCellEnter() {
+    this.gamePlay.addCellEnterListener((index) => this.onCellEnter(index));
+  }
 
   levelUp (playerTeam) {
     const levels = ['prairie', 'desert', 'arctic', 'mountain'];
@@ -83,7 +85,17 @@ export default class GameController {
   }
 
   onCellEnter(index) {
-    // TODO: react to mouse enter
+    if (this.gamePlay.cells[index].childElementCount !== 0) {
+      for (let team in this.teams) {
+        if (this.teams.hasOwnProperty(team)) {
+          this.teams[team].forEach((l) => {
+            if (l.position === index) {
+              this.gamePlay.showCellTooltip(`🎖${l.character.level} ⚔${l.character.attack} 🛡${l.character.defence} ❤${l.character.health}`, index);
+            }
+          });
+        }
+      }
+    }
   }
 
   onCellLeave(index) {
