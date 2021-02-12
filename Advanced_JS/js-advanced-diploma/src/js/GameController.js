@@ -6,6 +6,7 @@ import Magician from './Magician';
 import Vampire from './Vampire';
 import Undead from './Undead';
 import Daemon from './Daemon';
+import Team from './Team';
 import {generateTeam} from './generators';
 import themes from './themes';
 
@@ -21,12 +22,11 @@ export default class GameController {
 
     this.gamePlay.addNewGameListener((event) => {
       const allCharaters = [Bowman, Swordsman, Magician, Vampire, Undead, Daemon]; // все типы персонажей
-
-      let playerTeam = generateTeam([Bowman, Swordsman], 1, 2); // генерация команды игрока
-      let computerTeam = generateTeam(allCharaters, 1, 2); // генерация команды компьютера
-
-      this.renderTeam(playerTeam, computerTeam); // отрисовка команд
+      this.playerTeam = generateTeam([Bowman, Swordsman], 1, 2); // генерация команды игрока
+      this.computerTeam = generateTeam(allCharaters, 1, 2); // генерация команды компьютера
+      this.gamePlay.redrawPositions(Team.renderTeam(this.playerTeam, this.computerTeam)); // отрисовка команд
     }
+
 
       // desert
       // lvlUp + healAllSurvive
@@ -47,36 +47,7 @@ export default class GameController {
     // TODO: load saved stated from stateService
   }
 
-  genRand(mode) { // генерация индексов расположения для компьютера и для игрока
-    let index;
-    if (mode === 'left') {
-      do {index = Math.floor(Math.random() * (64 - 0) + 0)} while ((index % 8) !== 0 && (index % 8) !== 1);
-    } else if (mode === 'right') {
-      do {index = Math.floor(Math.random() * (64 - 0) + 0)} while ((index % 8) !== 6 && (index % 8) !== 7);
-    }
-    return index;
-  }
 
-  checkTeam(team, mode) { // следит, чтобы индексы персонажей не повторялись и генерирует персонажей
-    let render = [], index;
-    team.forEach((item, i) => {
-      index = this.genRand(mode); // генерация индекса расположения
-      if (render.length > 0) { // Если в массиве рендер есть элементы, то
-        render.forEach((item, i) => { // перебор элементов
-          while (item.position === index) { // проверка на совпадение текущего индекста
-            index = this.genRand(mode); // если совпадают, пересоздать индекс
-          }
-        });
-      }
-      render.push(new PositionedCharacter(team[i], index));
-    });
-    return render;
-  }
-
-  renderTeam(playerTeam, computerTeam) { // генерирует 2 комманды и отрисовывает на игровом поле
-    let render1 = this.checkTeam(playerTeam, 'left'), render2 = this.checkTeam(computerTeam, 'right');
-    this.gamePlay.redrawPositions(render1.concat(render2));
-  }
 
   levelUp (playerTeam) {
     const levels = ['prairie', 'desert', 'arctic', 'mountain'];
