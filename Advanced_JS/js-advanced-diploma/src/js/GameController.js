@@ -47,21 +47,17 @@ export default class GameController {
     // TODO: load saved stated from stateService
   }
 
-  genRand(mode) {
+  genRand(mode) { // генерация индексов расположения для компьютера и для игрока
     let index;
     if (mode === 'left') {
-      do {
-        index = Math.floor(Math.random() * (64 - 0) + 0);
-      } while ((index % 8) !== 0 && (index % 8) !== 1);
+      do {index = Math.floor(Math.random() * (64 - 0) + 0)} while ((index % 8) !== 0 && (index % 8) !== 1);
     } else if (mode === 'right') {
-      do {
-        index = Math.floor(Math.random() * (64 - 0) + 0);
-      } while ((index % 8) !== 6 && (index % 8) !== 7);
+      do {index = Math.floor(Math.random() * (64 - 0) + 0)} while ((index % 8) !== 6 && (index % 8) !== 7);
     }
     return index;
   }
 
-  checkTeam(team, mode) {
+  checkTeam(team, mode) { // следит, чтобы индексы персонажей не повторялись и генерирует персонажей
     let render = [], index;
     team.forEach((item, i) => {
       index = this.genRand(mode); // генерация индекса расположения
@@ -77,13 +73,9 @@ export default class GameController {
     return render;
   }
 
-  renderTeam(playerTeam, computerTeam) {
-    let render = [],
-        render1 = this.checkTeam(playerTeam, 'left'),
-        render2 = this.checkTeam(computerTeam, 'right');
-        render = render1.concat(render2);
-    console.log(render);
-    this.gamePlay.redrawPositions(render);
+  renderTeam(playerTeam, computerTeam) { // генерирует 2 комманды и отрисовывает на игровом поле
+    let render1 = this.checkTeam(playerTeam, 'left'), render2 = this.checkTeam(computerTeam, 'right');
+    this.gamePlay.redrawPositions(render1.concat(render2));
   }
 
   levelUp (playerTeam) {
