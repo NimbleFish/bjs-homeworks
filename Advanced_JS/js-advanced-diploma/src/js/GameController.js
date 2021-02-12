@@ -1,3 +1,14 @@
+import PositionedCharacter from './PositionedCharacter';
+import Character from './Character';
+import Bowman from './Bowman';
+import Swordsman from './Swordsman';
+import Magician from './Magician';
+import Vampire from './Vampire';
+import Undead from './Undead';
+import Daemon from './Daemon';
+import {generateTeam} from './generators';
+import themes from './themes';
+
 export default class GameController {
   constructor(gamePlay, stateService) {
     this.gamePlay = gamePlay;
