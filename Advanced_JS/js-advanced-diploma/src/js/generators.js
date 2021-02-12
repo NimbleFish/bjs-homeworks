@@ -38,17 +38,17 @@ export function* characterGenerator(allowedTypes, maxLevel) {
   if (answer === 'success') { // Если валидация успешна
     // Случайно генерирует персонажа по списку разрешённых
     do { randPers = generateRandomPersonage(); } while(!allowedTypes.includes(randPers));
-    yield new randPers(maxLevel);
+    yield new randPers(Math.floor(Math.random() * (maxLevel - 1) + 1), randPers.name.toLowerCase());
   } else {
     throw new Error(answer);
   }
 }
 
 export function generateTeam(allowedTypes, maxLevel, characterCount) {
-  let answer = generatorInputValidator(allowedTypes), team = new Set();
+  let answer = generatorInputValidator(allowedTypes), team = [];
   if (answer === 'success') { // Если валидация успешна
-    while (team.size < characterCount) {
-      for (let varIable of characterGenerator(allowedTypes, maxLevel)) team.add(varIable);
+    while (team.length < characterCount) {
+      for (let varIable of characterGenerator(allowedTypes, maxLevel)) team.push(varIable);
     }
     return team;
   } else {
