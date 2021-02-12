@@ -10,7 +10,7 @@ export default class Team {
     }
     return index;
   }
-  
+
   static checkTeam(team, mode) { // следит, чтобы индексы персонажей не повторялись и генерирует персонажей
     let render = [], index;
     team.forEach((item, i) => {
@@ -28,7 +28,6 @@ export default class Team {
   }
 
   static renderTeam(playerTeam, computerTeam) { // генерирует 2 комманды и отрисовывает на игровом поле
-    let render1 = this.checkTeam(playerTeam, 'left'), render2 = this.checkTeam(computerTeam, 'right');
-    return render1.concat(render2);
+    return {playerTeam: this.checkTeam(playerTeam, 'left'), computerTeam: this.checkTeam(computerTeam, 'right')};
   }
 }

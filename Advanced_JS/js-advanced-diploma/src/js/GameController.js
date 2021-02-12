@@ -20,14 +20,20 @@ export default class GameController {
     this.gamePlay.drawUi(themes.prairie); // установка темы 1-го уровня
     this.currentLevel = themes.prairie; // запоминание текущего уровня
 
-    this.gamePlay.addNewGameListener((event) => {
+    this.setEventListenerCellEnter(); // Регистрация события наведения на ячейки
+    this.gamePlay.addNewGameListener(() => {
       const allCharaters = [Bowman, Swordsman, Magician, Vampire, Undead, Daemon]; // все типы персонажей
-      this.playerTeam = generateTeam([Bowman, Swordsman], 1, 2); // генерация команды игрока
-      this.computerTeam = generateTeam(allCharaters, 1, 2); // генерация команды компьютера
-      this.gamePlay.redrawPositions(Team.renderTeam(this.playerTeam, this.computerTeam)); // отрисовка команд
+      this.teams = Team.renderTeam(generateTeam([Bowman, Swordsman], 1, 2), generateTeam(allCharaters, 1, 2)); // генерация команд
+      this.gamePlay.redrawPositions(this.teams.playerTeam.concat(this.teams.computerTeam)); // отрисовка команд
     }
 
-
+    // this.gamePlay.addCellLeaveListener((index) => {
+    //
+    // });
+    //
+    // this.gamePlay.addCellClickListener((index) => {
+    //
+    // });
       // desert
       // lvlUp + healAllSurvive
       // let playerTeam = generateTeam(allCharaters, 2, 1);
