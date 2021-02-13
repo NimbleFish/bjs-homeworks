@@ -11,10 +11,8 @@ export default class Cart {
     return [...this._items];
   }
 
-  get price(): number {
-    let summ: number = 0;
-    this._items.forEach((item) => summ += item.price);
-    return summ;
+  get price(): any {
+    return this._items.reduce((accumulator: any, currentValue: any):any => accumulator.price + currentValue.price);
   }
 
   AllPrice(proc: number): number {
