@@ -1,0 +1,44 @@
+ul, menu, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  padding-top: 15px;
+}
+
+.container {
+  width: 70%;
+}
+
+#menuUL {
+  display: flex;
+  justify-content: space-around;
+  width: 42%;
+  margin-bottom: 15px;
+}
+
+#mainUl {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.menuLi {
+  border: grey 2px solid;
+  padding: 3px 13px;
+  color: grey;
+  cursor: pointer;
+}
+
+.menuLi.selected {
+  background-color: grey;
+  color: white;
+  cursor: default;
+}
+
+li.tovar {
+  padding: 5px;
+}
