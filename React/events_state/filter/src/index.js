@@ -3,18 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Portfolio from './Portfolio';
 import Toolbar from './Toolbar';
-import reportWebVitals from './reportWebVitals';
 import ProjectList from './ProjectList';
 
+const portfolio = new Portfolio();
 ReactDOM.render(
   <React.StrictMode>
     <Toolbar
-      filters={Portfolio.filtres()}
-      selected={Portfolio.selected()}
-      onSelectFilter={Portfolio.onSelectFilter} />
+      filters={portfolio.filtres()}
+      selected={portfolio.selected()}
+      onSelectFilter={(e) => portfolio.onSelectFilter(e, portfolio.selected())} />
     {window.addEventListener('DOMContentLoaded', () => ProjectList())}
   </React.StrictMode>,
   document.getElementById('root')
 );
-
-reportWebVitals();

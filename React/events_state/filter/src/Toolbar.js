@@ -1,7 +1,7 @@
 function generateButtons(selected, listener, ...filters) {
   let elements = [];
   filters.forEach((el, i) => elements.push(
-    <li className={selected === el ? 'menuLi selected' : 'menuLi'} onClick={listener} id={"menu_"+i} key={i}>{el}</li>
+    <li className={selected === el ? 'menuLi selected' : 'menuLi'} onClick={listener} key={i}>{el}</li>
   ));
   return (
     <ul id="menuUL">{elements}</ul>

@@ -3,29 +3,33 @@ import ProjectList from './ProjectList';
 import jsonData from './Tovars.json';
 
 class Portfolio {
-  static filtres = () => {
-    return ["All", "Websites", "Flayers", "Business Cards"];
+  constructor() {
+    this.state = {
+      filters: ["All", "Websites", "Flayers", "Business Cards"],
+      selected: 'All'
+    }
+    this.filter = this.state.selected;
   }
 
-  static selected = () => {
-    return document.getElementsByClassName('selected')[0] ? document.getElementsByClassName('selected')[0] : 'All';
+  filtres() {
+    return this.state.filters;
   }
 
-  static onSelectFilter(filter) {
-    filter = filter.target.textContent;
-    let categoryItems = [],
-        filters = Portfolio.filtres(),
-        cur = document.getElementById('menu_' + filters.indexOf(filter)),
-        sel = document.querySelector('.menuLi.selected');
-    if (cur !== sel) {
-      sel.classList.remove('selected');
-      cur.classList.add('selected');
-      if (filter === 'All') {
-        ProjectList();
-      } else {
-        jsonData.tovars.forEach(el => filter === el.category ? categoryItems.push(el.img) : '');
-        ProjectList(categoryItems, filter);
-      }
+  selected() {
+    return this.state.selected;
+  }
+
+  onSelectFilter(event, selected) {
+    let menu = event.nativeEvent.path[1].children;
+    for (let i = 0; i < menu.length; i++) if (menu[i].classList.contains('selected')) menu[i].classList.remove('selected');
+    event.target.classList.add('selected');
+    selected = event.target.textContent;
+    if (selected !== 'All') {
+      let categoryItems = [];
+      jsonData.tovars.forEach(el => selected === el.category ? categoryItems.push(el.img) : '');
+      ProjectList(categoryItems, selected);
+    } else {
+      ProjectList();
     }
   }
 }

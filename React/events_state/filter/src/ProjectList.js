@@ -1,16 +1,20 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
 import jsonData from './Tovars.json';
 
 function writeDoc(data, category) {
-  let father = document.getElementById('mainUl');
-  father.innerHTML = '';
-  data.forEach(tovar => {
-    let img = document.createElement('img'), li = document.createElement('li');
-    img.src = tovar.img || tovar;
-    li.appendChild(img);
-    li.classList.add('tovar');
-    li.dataset.category = tovar.category || category;
-    father.insertAdjacentElement('beforeend', li);
-  });
+  ReactDOM.render(
+    <React.StrictMode>
+      {data.map((tovar, id) => {
+        return (
+        <li className="tovar" data-category={tovar.category || category} key={id}>
+          <img src={tovar.img || tovar} alt="tovar_img" />
+        </li>
+        )
+      })}
+    </React.StrictMode>,
+    document.getElementById('mainUl')
+  );
 }
 
 function ProjectList(projects, category) {
