@@ -11,22 +11,16 @@ function Store() {
   let [state, changeState] = useState('view_list');
   return (
     <div id="container">
-      <div id="switch"><IconSwitch icon={state === "view_list" ? "view_module" : "view_list"} onSwitch={
-        () => {
-          let tar = document.querySelector('main');
-          if (state !== 'view_module') {
-            tar.removeAttribute('class');
-            tar.classList.add('blockStyle');
-          } else {
-            tar.removeAttribute('class');
-            tar.classList.add('lineStyle');
+      <div id="switch">
+        <IconSwitch icon={state === "view_list" ? "view_module" : "view_list"} onSwitch={
+          (e) => {       
+            e.nativeEvent.path[2].children[1].removeAttribute('class');
+            e.nativeEvent.path[2].children[1].classList.add(state === 'view_module' ? 'lineStyle' : 'blockStyle');
+            changeState(e.target.innerText);
           }
-          changeState(state !== "view_list" ? "view_list" : "view_module")
-        }
-      } /></div>
-      <main className="lineStyle">
-        {state === "view_list"? <ListView items={products} /> : <CardsView cards={products} />}
-      </main>
+        } />
+      </div>
+      <main className="lineStyle">{state === "view_list"? <ListView items={products} /> : <CardsView cards={products} />}</main>
     </div>
   );
 }
