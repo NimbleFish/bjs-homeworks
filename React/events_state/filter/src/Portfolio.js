@@ -1,14 +1,30 @@
+import React from 'react';
 import './App.css';
 import ProjectList from './ProjectList';
 import jsonData from './Tovars.json';
+import Toolbar from './Toolbar';
 
-class Portfolio {
+class Portfolio extends React.Component {
   constructor() {
+    super();
     this.state = {
       filters: ["All", "Websites", "Flayers", "Business Cards"],
       selected: 'All'
     }
     this.filter = this.state.selected;
+  }
+
+  render(category, selected) {
+    return (
+      <div className="container">
+        <Toolbar filters={this.filtres()} selected={this.selected()} onSelectFilter={(e) => this.onSelectFilter(e, this.selected())} />
+        <main>
+          <ul id="mainUl">
+            <ProjectList categoryItems={category} selected={selected} />
+          </ul>
+        </main>
+      </div>
+    );
   }
 
   filtres() {
@@ -27,9 +43,9 @@ class Portfolio {
     if (selected !== 'All') {
       let categoryItems = [];
       jsonData.tovars.forEach(el => selected === el.category ? categoryItems.push(el.img) : '');
-      ProjectList(categoryItems, selected);
+      this.render(categoryItems, selected);
     } else {
-      ProjectList();
+      this.render();
     }
   }
 }
