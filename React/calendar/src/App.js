@@ -3,11 +3,6 @@ import React from 'react';
 import Week from './Week.js';
 import './App.css';
 
-// <tr>
-//   <td className="ui-datepicker-other-month">27</td>
-//   <td className="ui-datepicker-other-month">28</td>
-// </tr>
-
 function App(props) {
   const {data} = props;
   function getDayOfWeek(day) {
