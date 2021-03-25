@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import ProjectList from './ProjectList';
-import jsonData from './Tovars.json';
 import Toolbar from './Toolbar';
 
 class Portfolio extends React.Component {
@@ -9,20 +8,17 @@ class Portfolio extends React.Component {
     super();
     this.state = {
       filters: ["All", "Websites", "Flayers", "Business Cards"],
-      selected: 'All'
+      selected: 'All',
+      elements: ProjectList()
     }
-    this.filter = this.state.selected;
+    this.onSelectFilter = this.onSelectFilter.bind(this);
   }
 
-  render(category, selected) {
+  render() {
     return (
       <div className="container">
-        <Toolbar filters={this.filtres()} selected={this.selected()} onSelectFilter={(e) => this.onSelectFilter(e, this.selected())} />
-        <main>
-          <ul id="mainUl">
-            <ProjectList categoryItems={category} selected={selected} />
-          </ul>
-        </main>
+        <Toolbar filters={this.filtres()} selected={this.selected()} onSelectFilter={this.onSelectFilter} />
+        <ul id="mainUl">{this.state.elements.map(elem => {return elem;})}</ul>
       </div>
     );
   }
@@ -35,18 +31,11 @@ class Portfolio extends React.Component {
     return this.state.selected;
   }
 
-  onSelectFilter(event, selected) {
-    let menu = event.nativeEvent.path[1].children;
-    for (let i = 0; i < menu.length; i++) if (menu[i].classList.contains('selected')) menu[i].classList.remove('selected');
-    event.target.classList.add('selected');
-    selected = event.target.textContent;
-    if (selected !== 'All') {
-      let categoryItems = [];
-      jsonData.tovars.forEach(el => selected === el.category ? categoryItems.push(el.img) : '');
-      this.render(categoryItems, selected);
-    } else {
-      this.render();
-    }
+  onSelectFilter(event) {
+    event.target.classList.contains('selected') && this.setState(prevState => {
+      prevState.elements = ProjectList(prevState.selected);
+      prevState.selected = event.target.textContent;
+    });
   }
 }
 

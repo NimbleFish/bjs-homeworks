@@ -1,21 +1,24 @@
 import jsonData from './Tovars.json';
 
-function writeDoc(data, category) {
-  console.log(data);
-  console.log(category);
-  return (
-    data.map((tovar, id) => {
-      return (
-        <li className="tovar" data-category={tovar.category || category} key={id}>
-          <img src={tovar.img || tovar} alt="tovar_img" />
-        </li>
-      );
-    })
-  );
-}
-
-function ProjectList(projects, selected) {
-  return Array.isArray(projects) ? writeDoc(projects, selected) : writeDoc(jsonData.tovars);
+function ProjectList(selected) {
+  if (selected) {
+    let data = jsonData.tovars.map((tovar, id) => {
+      if (tovar.category === selected) {
+        return (
+          <li className="tovar filtered" data-category={tovar.category} key={id}>
+            <img src={tovar.img} alt="tovar_img" />
+          </li>
+        );
+      } else {
+        return 'none';
+      }
+    });
+    return data.sort().splice(0, data.indexOf('none'));
+  } else {
+    return jsonData.tovars.map((tovar, id) => {
+      return <li className="tovar" data-category={tovar.category} key={id}><img src={tovar.img} alt="tovar_img" /></li>;
+    });
+  }
 }
 
 export default ProjectList;

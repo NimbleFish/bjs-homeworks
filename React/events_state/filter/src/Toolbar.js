@@ -3,11 +3,11 @@ function generateButtons(selected, listener, ...filters) {
   filters.forEach((el, i) => elements.push(
     <li className={selected === el ? 'menuLi selected' : 'menuLi'} onClick={listener} key={i}>{el}</li>
   ));
-  return <ul id="menuUL">{elements}</ul>;
+  return elements;
 }
 
 function Toolbar(data) {
-  return <menu className="menu">{generateButtons(data.selected, data.onSelectFilter, ...data.filters)}</menu>;
+  return <ul id="menuUL">{generateButtons(data.selected, data.onSelectFilter, ...data.filters)}</ul>;
 }
 
 export default Toolbar;
