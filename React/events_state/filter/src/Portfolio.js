@@ -2,23 +2,30 @@ import React from 'react';
 import './App.css';
 import ProjectList from './ProjectList';
 import Toolbar from './Toolbar';
+import jsonData from './Tovars.json';
 
 class Portfolio extends React.Component {
   constructor() {
     super();
     this.state = {
       filters: ["All", "Websites", "Flayers", "Business Cards"],
-      selected: 'All',
-      elements: ProjectList()
+      selected: 'All'
     }
-    this.onSelectFilter = this.onSelectFilter.bind(this);
   }
 
   render() {
+    const filteredTovars = () => {
+      return this.selected() === 'All' ? jsonData.tovars : jsonData.tovars.filter(tovar => {
+        return tovar.category === this.selected() && tovar;
+      });
+    }
+
+    const onSelectFilter = e => this.setState(prevState => prevState.selected = e.target.textContent);
+
     return (
       <div className="container">
-        <Toolbar filters={this.filtres()} selected={this.selected()} onSelectFilter={this.onSelectFilter} />
-        <ul id="mainUl">{this.state.elements.map(elem => {return elem;})}</ul>
+        <Toolbar filters={this.filtres()} selected={this.selected()} onSelectFilter={onSelectFilter} />
+        <ul id="mainUl"><ProjectList tovars={filteredTovars()} /></ul>
       </div>
     );
   }
@@ -29,13 +36,6 @@ class Portfolio extends React.Component {
 
   selected() {
     return this.state.selected;
-  }
-
-  onSelectFilter(event) {
-    event.target.classList.contains('selected') && this.setState(prevState => {
-      prevState.elements = ProjectList(prevState.selected);
-      prevState.selected = event.target.textContent;
-    });
   }
 }
 
