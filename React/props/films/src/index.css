@@ -1,3 +1,5 @@
+* { list-style: none; }
+.card-body-stars { display: flex; }
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
