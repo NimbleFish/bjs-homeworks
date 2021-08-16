@@ -1,9 +1,15 @@
 import ShopCard from './ShopCard';
+import Products from './Products.json';
 
-function CardsView(props) {
-  return props.cards.map((card, index) => {
-    return <ShopCard name={card.name} price={card.price} color={card.color} img={card.img} i={index} />;
-  });
+function Cards(...cards) {
+  let results = [];
+  for (let i = 0; i < Products.products.length; i++) results.push(ShopCard(cards[i].name, cards[i].price, cards[i].color, cards[i].img, i));
+  return results;
+}
+
+function CardsView(cards) {
+  cards = cards.cards;
+  return Cards(...cards);
 }
 
 export default CardsView;

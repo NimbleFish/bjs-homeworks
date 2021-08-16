@@ -1,5 +1,4 @@
-function ShopCard(props) {
-  const { name, price, color, img, i } = props;
+function ShopCard(name, price, color, img, i) {
   return (
     <div className="tovar block" key={i}>
       <div className="name">{name}</div>
