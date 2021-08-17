@@ -6,8 +6,8 @@ function generateButtons(selected, listener, ...filters) {
   return elements;
 }
 
-function Toolbar(props) {
-  return <ul id="menuUL">{generateButtons(props.selected, props.onSelectFilter, ...props.filters)}</ul>;
+function Toolbar({ selected, onSelectFilter, filters }) {
+  return <ul id="menuUL">{generateButtons(selected, onSelectFilter, ...filters)}</ul>;
 }
 
 export default Toolbar;
