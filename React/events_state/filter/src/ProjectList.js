@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 function ProjectList({ tovars }) {
   return tovars.map((tovar, id) => {
     return (
@@ -6,6 +8,10 @@ function ProjectList({ tovars }) {
       </li>
     );
   });
+}
+
+ProjectList.propTypes = {
+  tovars: PropTypes.array
 }
 
 export default ProjectList;
