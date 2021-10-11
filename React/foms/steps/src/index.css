@@ -1,13 +1,58 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* { user-select: none; }
+form, .fdc, body, #button, .labels, li, .li_options { display: flex }
+label { margin-bottom: 10px }
+#button, label, .li_edit, .li_remove { cursor: pointer }
+#button { padding: 15px }
+.labels, li { justify-content: space-between }
+
+input, #button, ul {
+  border: 2px solid black;
+  border-radius: 15px;
+  padding: 15px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+li {
+  list-style: none;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+div#root {
+  padding: 30px;
+  height: 30%;
+}
+
+.fdc {
+  flex-direction: column;
+  margin-right: 15px;
+}
+
+input, #button {
+  padding: 15px 10px;
+  border-radius: 10px;
+  height: 20px;
+}
+
+form {
+  align-items: flex-end;
+  margin-bottom: 25px;
+}
+
+.li_edit, .li_remove {
+  height: 32px;
+  width: 32px;
+  background-repeat: no-repeat;
+}
+
+.li_edit {
+  background-image: url('./img/edit.svg');
+}
+
+.li_remove {
+  background-image: url('./img/delete.svg');
 }
