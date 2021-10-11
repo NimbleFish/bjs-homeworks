@@ -1,0 +1,23 @@
+body, #root, .card { display: flex }
+#root { justify-content: space-around }
+
+body {
+  margin: 0;
+  height: 100vh;
+  align-items: center;
+}
+.card {
+  width: 15%;
+  flex-direction: column;
+}
+
+img {
+  height: 90px;
+  margin-bottom: 15px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
