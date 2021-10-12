@@ -1,7 +1,93 @@
 * {
   box-sizing: border-box;
+  font-family: sans-serif;
   margin: 0;
   padding: 0;
   text-decoration: none;
   list-style: none;
+}
+
+/* flex */ body, #root, main, main > div, ul.menu, .searchContainer, .searchButton, ul.news > li.new, ul.valutes, footer, div.fCol, .weatherContainer, .mainWeather { display: flex }
+/* align center */ #root, .weatherContainer, .mainWeather, ul.news > li.new, main, .searchButton { align-items: center }
+/* direction column */ #root, main > div, div.fCol { flex-direction: column }
+/* justify: space-between */ ul.valutes, ul.menu { justify-content: space-between }
+/* bg color: rgb(255, 187, 0) */ .searchContainer, .searchButton, .rect { background-color: rgb(255, 187, 0) }
+/* cursor poinet */ ul.menu > li, ul.news > li.new, .blockTitle, .searchButton { cursor: pointer }
+/* color grey */  .diviz > span, .valute > span, ul.afisha > .item > span, .TV > li > span { color: grey; }
+/* width 90% */ .searchContainer, .searchLine, footer { width: 90% }
+
+body { justify-content: center }
+header { padding: 25px 30% 15px 0 }
+main > div { width: 90% }
+.searchContainer { margin-bottom: 10px }
+ul.menu > li { color: rgb(65, 115, 209) }
+.advertisingContainer { margin: 25px 0 }
+ul.news > li.new { margin: 5px 0 }
+ul.news > li.new > img { margin-right: 5px }
+ul.valutes { margin-top: 10px }
+div.fCol { width: 33% }
+.block { margin-bottom: 25px }
+.mainWeather { margin-right: 10px }
+span.mainWeather { font-size: 25px }
+.mainWeather > img { margin-right: 5px }
+.bold, .valute, ul.afisha > .item { font-weight: 700 }
+ul.afisha > .item, .vizits > li, .TV > li { margin: 10px 0 }
+.valute > span, ul.afisha > .item > span, .TV > li > span { font-weight: 500 }
+
+#root {
+  width: 80vw;
+  height: 100vh;
+}
+
+main {
+  width: 100%;
+  padding: 20px 0;
+}
+
+main > img {
+  height: 46px;
+  width: 120px;
+  margin-right: 25px;
+}
+
+ul.menu {
+  width: 80%;
+  margin-bottom: 10px;
+}
+
+.searchContainer {
+  position: relative;
+  padding: 4px;
+  height: 40px;
+}
+
+.searchButton {
+  margin-left: 15px;
+  height: 36px;
+}
+
+.rect {
+  position: absolute;
+  right: -14px;
+  top: 5px;
+  width: 29px;
+  height: 29px;
+  transform: rotate(44deg);
+}
+
+.searchLine {
+  background-color: #fff;
+  height: 32px;
+}
+
+footer {
+  margin-top: 15px;
+  margin-left: 18%;
+  justify-content: space-around;
+}
+
+.blockTitle {
+  font-size: large;
+  color: blue;
+  margin-bottom: 5px;
 }
