@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import Posts from "./Posts";
+import SeePage from "./SeePage";
+import NewPost from "./NewPost";
+
+const HOST = 'http://localhost:7777';
+
 
 function App() {
+  const [ data, setData ] = useState(null);
+  const updateDataList = () => fetch(HOST+'/posts').then(d => d.json()).then(d => setData(d));
+  useEffect(updateDataList, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" exact element={<Posts data={data} update={updateDataList} />} />    
+        <Route path="/posts/new" element={<NewPost update={updateDataList} />} />
+        <Route path="/posts/:id" element={<SeePage update={updateDataList} />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
