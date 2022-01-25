@@ -1,34 +1,30 @@
 import { Fragment, useState } from "react";
-import List from './List';
+import List from "./List";
 
-let listOfData = [];
 const zeroStatus = { 'date': '', 'number': 0 };
 
-const removeHandler = e => e.target.parentNode.parentNode.remove();
-
-const sort = () => listOfData = listOfData.sort((a, b) => a.date > b.date);
-
 export default function App() {
-    const [form, setForm] = useState(zeroStatus)
-    const changeValue = frm => setForm(prevForm => ({ ...prevForm, [frm.target.type]: frm.target.type === 'number'?
-        parseInt(frm.target.value) : frm.target.value
-    }));
+    const [ list, changeList ] = useState([]);
+    const [ form, setForm ] = useState(zeroStatus)
+
+    const changeValue = frm => setForm(prevForm => ({ ...prevForm, [frm.target.type]: frm.target.type === 'number'? parseInt(frm.target.value) : frm.target.value }));
+    
     const submitForm = () => {
-        const exists = listOfData.filter(el => el.date === form.date); // Получение данных по дате
-        if (exists.length !== 0) { // Проверка есть ли уже такая дата
-            exists[0].number = parseInt(exists[0].number) + parseInt(form.number); // Добавление пройденных км
-            listOfData.filter(el => el.date !== form.date).push(exists[0]); // Соединение с другими данными
-        } else listOfData.push(form); // Добавление, если нет даты
-        sort(); // Сортировка по датам
-        setForm(zeroStatus); // Сброс полей ввода
+        let el = list.filter(el => el.date == form.date)[0];
+        if (!el) changeList(prevList => ([ ...prevList, { ...form, id: new Date().getTime() } ]));
+        else {
+            el.number = parseInt(el.number) + parseInt(form.number);
+            changeList(prevList => ([ ...prevList.filter(e => e.date != el.date), { ...el } ]));
+        }
+        setForm(zeroStatus);
     }
 
-    const editHandler = e => {
-        const data = e.target.parentNode.parentNode.children; // Получение вложенной структуры строки 
-        const oldDate = data[0].innerText; // Запись в память данных о дате
-        const oldNumber = parseFloat(data[1].innerText); // Запись в память данных о км
-        removeHandler(e); // Удалить строку с старыми данными
-        setForm({ 'date': oldDate, 'number': oldNumber }); // Запись старых данных в поля редактирования данных
+    const removeHandler = id => changeList([...list.filter(el => el.id != id)]);
+
+    const editHandler = id => {
+        const el = list.filter(e => e.id == id)[0];
+        setForm({ 'date': el.date, 'number': el.number });
+        removeHandler(id);
     };
 
     return (
@@ -44,7 +40,7 @@ export default function App() {
                 </div>
                 <div id="button" onClick={submitForm}>OK</div>
             </form>
-            <List list={listOfData} editHandler={editHandler} removeHandler={removeHandler} />
+            <List list={list} editHandler={editHandler} removeHandler={removeHandler} />
         </Fragment>
     );
 }
