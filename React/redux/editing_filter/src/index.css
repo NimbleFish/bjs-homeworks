@@ -1,13 +1,17 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body { margin: 15px 0 0 15p; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+#root > div, form, ul > li { display: flex }
+.mr { margin-right: 10px }
+#root > div > input, form > input { margin-right: 10px }
+#root > div, ul > li { margin-bottom: 15px }
+.btn {
+  cursor: pointer;
+  margin-right: 15px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
+
+ul > li > div:not(.btn) { width: 15vw }
