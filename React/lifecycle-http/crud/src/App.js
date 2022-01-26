@@ -1,18 +1,17 @@
-import { useState, Fragment } from 'react';
+import { useState, Fragment, useEffect } from 'react';
 import updateImg from './img/updateImg.png';
 import deleteImg from './img/deleteImg.png';
 
-let start = true;
-
 export default function App() {
   const [list, updateList] = useState([]);
+  const [text, setText] = useState("");
 
-  const getNotes = () => fetch(process.env.REACT_APP_SERVER_URL).then(data => updateList(data));
-  if (start) { getNotes(); start = false; }
+  const getNotes = () => fetch(process.env.REACT_APP_SERVER_URL).then(el => el.json()).then(data => updateList([...data]));
+  useEffect(() => getNotes(), []);
   
-  const createNotes = e => fetch(process.env.REACT_APP_SERVER_URL, {'method':'POST','body':JSON.stringify({'content':e.target.previousSibling.value})});
+  const createNotes = () => {fetch(process.env.REACT_APP_SERVER_URL, {'method':'POST', 'headers': { 'Content-Type': 'application/json' }, 'body':JSON.stringify({'content':text})}).then(() => getNotes()); setText(""); };
   
-  const deleteNotes = e => fetch(process.env.REACT_APP_SERVER_URL, {'method':'DELETE','body':JSON.stringify({'id':e.target.parentNode.id})}).then(() => getNotes());
+  const deleteNotes = id => fetch(process.env.REACT_APP_SERVER_URL, {'method':'DELETE', 'headers': { 'Content-Type': 'application/json' }, 'body':JSON.stringify({id})}).then(() => getNotes());
 
   return (
     <Fragment>
@@ -22,10 +21,10 @@ export default function App() {
       </header>
       <ul>
         {
-          list.length > 0 && list.map(el => {
+          list.length !== 0 && list.map(el => {
             return (
-              <li id={el.id} key={el.id}>
-                <span onClick={deleteNotes}><img src={deleteImg} alt="deleteButton" /></span>
+              <li key={el.id}>
+                <span onClick={() => deleteNotes(el.id)}><img src={deleteImg} alt="deleteButton" /></span>
                 <div>{el.content}</div>
               </li>
             );
@@ -33,8 +32,8 @@ export default function App() {
         }
       </ul>
       <div>
-        <textarea></textarea>
-        <button onClick={createNotes}>Отправить</button>
+        <textarea onChange={evt => setText(evt.target.value)} value={text}></textarea>
+        <button onClick={() => createNotes()}>Отправить</button>
       </div>
     </Fragment>
   );

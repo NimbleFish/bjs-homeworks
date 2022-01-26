@@ -15,12 +15,11 @@ let history = fs.readFileSync(pathToHistory, 'utf8')!== '' ? JSON.parse(fs.readF
 server.get('/notes', (req, res) => res.json(history));
 
 server.post('/notes', jsonParser, (req, res) => {
-    console.log(req);
     history.push({ 'id': uuidv4(), 'content': req.body.content });
     res.write('ok');
 });
 
-server.delete('/notes', (req, res) => {
+server.delete('/notes', jsonParser, (req, res) => {
     history = history.filter(el => el.id !== req.body.id);
     res.write('ok');
 });
