@@ -1,17 +1,12 @@
-import { useNavigate, useLocation } from 'react-router-dom';
-
-const activePage = (location, loc) => location.pathname == loc ? "menu__item-active" : null;
+import { NavLink } from 'react-router-dom';
 
 export default function Menu() {
-    const location = useLocation();
-    const navigate = useNavigate();
-
     return (
         <ul className="menu">
-            <li onClick={() => navigate('/')} className={"menu__item " + activePage(location, '/')}>Главная</li>
-            <li onClick={() => navigate('/drift')} className={"menu__item " + activePage(location, '/drift')}>Дрифт-такси</li>
-            <li onClick={() => navigate('/timeattack')} className={"menu__item " + activePage(location, '/timeattack')}>Time Attack</li>
-            <li onClick={() => navigate('/forza')} className={"menu__item " + activePage(location, '/forza')}>Forza Karting</li>
+            <NavLink className='menu__item'to='/' activeClassName="active" >Главная</NavLink>
+            <NavLink className='menu__item'to='/drift' activeClassName="active" >Дрифт-такси</NavLink>
+            <NavLink className='menu__item'to='/timeattack' activeClassName="active" >Time Attack</NavLink>
+            <NavLink className='menu__item'to='/forza' activeClassName="active" >Forza Karting</NavLink>
         </ul>
     );
   }
