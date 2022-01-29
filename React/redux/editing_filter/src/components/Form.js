@@ -1,15 +1,18 @@
-import { Fragment, useState } from "react";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 const none = { 'text': "", 'number': 0 };
 
 export default function Form(props) {
+    const dispatch = useDispatch();
+
     const [ showCancel, changeShowCancel ] = useState(false);
     const [ form, setForm ] = useState(none);
 
     props.forma(form, setForm);
 
     const submitForm = () => {
-        props.disp('ADD', { 'id': new Date().getTime(), ...form });
+        dispatch({ 'type': 'ADD', 'payload': { 'id': new Date().getTime(), ...form } });
         setForm(none);
     }
 

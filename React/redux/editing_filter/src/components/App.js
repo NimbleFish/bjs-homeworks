@@ -1,34 +1,30 @@
 import { Fragment } from "react";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Form from "./Form";
 import Filter from "./Filter";
 import List from "./List";
 
-function App(props) {
+export default function App() {
+  const data = useSelector(state => state);
+  const dispatch = useDispatch();
+
   let form, setForm;
   
   const forma = (frm, setFrm) => { form = frm; setForm = setFrm };
 
   const editHandler = id => {
-    const el = props.list.filter(el => el.id === id)[0];
+    const el = data.list.filter(el => el.id === id)[0];
     setForm({ 'text': el.text, 'number': el.number });
     removeHandler(el.id);
   };
 
-  const removeHandler = id => {
-    const el = props.list.filter(el => el.id === id)[0];
-    props.disc('REMOVE', el);
-  }
+  const removeHandler = id => dispatch({ 'type': 'REMOVE', 'payload': data.list.filter(el => el.id === id)[0] });
 
   return (
     <Fragment>
-      <Filter list={props.list} filter={props.filter} disp={props.disc} />
-      <Form list={props.list} disp={props.disc} forma={forma} />
-      <List filter={( props.filter.length !== 0 || props.filter[0] == { 'id': null, 'text': null, 'number': null } ) ? props.filter : props.list} editHandler={editHandler} removeHandler={removeHandler} />
+      <Filter />
+      <Form forma={forma} />
+      <List editHandler={editHandler} removeHandler={removeHandler} />
     </Fragment>
   );
 }
-
-const act = dispacth => ({ disc: (type, payload) => dispacth({ type, payload }) });
-
-export default connect(state => state, act)(App);
