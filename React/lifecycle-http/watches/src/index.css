@@ -12,3 +12,5 @@ body {
 }
 
 .btn { cursor: pointer }
+
+ul { list-style: none }
